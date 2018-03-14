@@ -1,0 +1,5 @@
+---
+  - "[Books] have one or more [Authors]"
+  - "[Books] are relevant to one or more [Subjects]"
+  - "[Books] are in one or more [Languages]"
+  - "[Books] are available on Gutenberg in one or more [Formats]"

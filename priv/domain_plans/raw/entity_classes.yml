@@ -1,0 +1,19 @@
+---
+  -
+    singular_name: Book
+    plural_name: Books
+  -
+    singular_name: Author
+    plural_name: Authors
+    attributes:
+      - Year of birth
+      - Year of death
+  -
+    singular_name: Language
+    plural_name: Languages
+  -
+    singular_name: Format
+    plural_name: Formats
+  -
+    singular_name: Subject
+    plural_name: Subjects
