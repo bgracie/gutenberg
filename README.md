@@ -1,6 +1,6 @@
 # Domain Plan
 
-Available [here](priv/domain_plans/compiled/authors.md)
+Available [here](priv/domain_plans/compiled/entity_class_index.md)
 
 # Gutenberg
 
