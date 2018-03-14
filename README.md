@@ -1,3 +1,7 @@
+# Domain Plan
+
+Available [here](priv/domain_plans/compiled/authors.md)
+
 # Gutenberg
 
 To start your Phoenix server:
