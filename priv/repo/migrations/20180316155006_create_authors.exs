@@ -3,12 +3,14 @@ defmodule Gutenberg.Repo.Migrations.CreateAuthors do
 
   def change do
     create table(:authors) do
-      add :name, :string
+      add :name, :string, null: false
       add :year_of_birth, :integer
       add :year_of_death, :integer
 
       timestamps()
     end
+
+    create unique_index(:authors, [:name])
 
   end
 end

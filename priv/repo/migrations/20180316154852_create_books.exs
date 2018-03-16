@@ -3,10 +3,11 @@ defmodule Gutenberg.Repo.Migrations.CreateBooks do
 
   def change do
     create table(:books) do
-      add :title, :string
+      add :title, :string, null: false
 
       timestamps()
     end
 
+    create unique_index(:books, [:title])
   end
 end

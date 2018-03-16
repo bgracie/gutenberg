@@ -3,10 +3,12 @@ defmodule Gutenberg.Repo.Migrations.CreateSubjects do
 
   def change do
     create table(:subjects) do
-      add :name, :string
+      add :name, :string, null: false
 
       timestamps()
     end
+
+    create unique_index(:subjects, [:name])
 
   end
 end

@@ -3,10 +3,12 @@ defmodule Gutenberg.Repo.Migrations.CreateLanguages do
 
   def change do
     create table(:languages) do
-      add :code, :string
+      add :code, :string, null: false
 
       timestamps()
     end
+
+    create unique_index(:languages, [:code])
 
   end
 end
