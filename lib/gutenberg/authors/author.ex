@@ -16,5 +16,6 @@ defmodule Gutenberg.Authors.Author do
     author
     |> cast(attrs, [:name, :year_of_birth, :year_of_death])
     |> validate_required([:name, :year_of_birth, :year_of_death])
+    |> unique_constraint(:name)
   end
 end

@@ -14,5 +14,6 @@ defmodule Gutenberg.Subjects.Subject do
     subject
     |> cast(attrs, [:name])
     |> validate_required([:name])
+    |> unique_constraint(:name)
   end
 end

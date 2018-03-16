@@ -14,5 +14,6 @@ defmodule Gutenberg.Formats.Format do
     format
     |> cast(attrs, [:mime_type])
     |> validate_required([:mime_type])
+    |> unique_constraint(:mime_type)
   end
 end
