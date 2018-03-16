@@ -16,6 +16,12 @@ defmodule GutenbergWeb.Router do
   scope "/", GutenbergWeb do
     pipe_through :browser # Use the default browser stack
 
+    resources "/books", BookController
+    resources "/authors", AuthorController
+    resources "/formats", FormatController
+    resources "/languages", LanguageController
+    resources "/subjects", SubjectController
+
     get "/", PageController, :index
   end
 
