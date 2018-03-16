@@ -12,6 +12,8 @@
 
 alias Gutenberg.{Repo, ImportBooks}
 alias Gutenberg.{Authors, Books, Languages, Subjects, Formats}
+alias Ecto.Changeset
+import Ecto.Query, warn: false
 
 books = ImportBooks.exec()
 
@@ -57,6 +59,50 @@ books
     Repo.insert!(%Authors.Author{name: name})
   end)
 
-# all uniq
+# Seed BOOKS
 
-# create books...find by
+books
+|> Enum.filter(&(!is_nil(&1["title"]) && String.length(&1["title"]) < 200))
+|> Enum.uniq_by(&(&1["title"]))
+|> Enum.take(1000)
+|> Enum.each(fn(book) ->
+    IO.puts(book["title"])
+
+    # TODO: url
+
+    # mime_types = Map.keys(books["formats"])
+    formats = Repo.all(
+      from formats in Formats.Format,
+      where: formats.mime_type in ^Map.keys(book["formats"])
+    )
+
+    subjects = Repo.all(
+      from subjects in Subjects.Subject,
+      where: subjects.name in ^book["subjects"]
+    )
+
+    languages = Repo.all(
+      from languages in Languages.Language,
+      where: languages.code in ^(book["language"] || [])
+    )
+
+    authors = case book["author"] do
+      nil -> []
+      _ -> Repo.all(
+        from authors in Authors.Author,
+        where: authors.name == ^book["author"]
+      )
+    end
+
+
+
+    %Books.Book{title: book["title"]}
+    |> Repo.insert!
+    |> Repo.preload([:formats, :subjects, :languages, :authors])
+    |> Ecto.Changeset.change()
+    |> Changeset.put_assoc(:formats, formats)
+    |> Changeset.put_assoc(:subjects, subjects)
+    |> Changeset.put_assoc(:languages, languages)
+    |> Changeset.put_assoc(:authors, authors)
+    |> Repo.update!()
+  end)

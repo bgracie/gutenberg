@@ -4,7 +4,7 @@ defmodule Gutenberg.Repo.Migrations.AddJoinTables do
   def change do
     create table(:book_subjects) do
       add :book_id, references("books")
-      add :subject_id, references("authors")
+      add :subject_id, references("subjects")
 
       timestamps()
     end

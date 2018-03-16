@@ -3,7 +3,7 @@ defmodule Gutenberg.Repo.Migrations.CreateBooks do
 
   def change do
     create table(:books) do
-      add :title, :string, null: false
+      add :title, :string, null: false, size: 500
 
       timestamps()
     end
