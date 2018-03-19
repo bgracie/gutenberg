@@ -63,6 +63,7 @@ books
 
 books
 |> Enum.filter(&(!is_nil(&1["title"]) && String.length(&1["title"]) < 200))
+|> Enum.filter(&(!is_nil(&1["author"])))
 |> Enum.uniq_by(&(&1["title"]))
 |> Enum.take(2000)
 |> Enum.each(fn(book) ->

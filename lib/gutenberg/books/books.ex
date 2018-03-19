@@ -19,6 +19,7 @@ defmodule Gutenberg.Books do
   """
   def list_books do
     Repo.all(Book)
+    |> Repo.preload(:authors)
   end
 
   @doc """
