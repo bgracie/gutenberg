@@ -8,23 +8,22 @@ defmodule Gutenberg.Books.Book do
 
     many_to_many :authors,
       Gutenberg.Authors.Author,
-      join_through: Gutenberg.Books.BookAuthor,
-      on_delete: :delete_all
+      join_through: Gutenberg.Books.BookAuthor
 
     many_to_many :formats,
       Gutenberg.Formats.Format,
-      join_through: Gutenberg.Books.BookFormat,
-      on_delete: :delete_all
+      join_through: Gutenberg.Books.BookFormat
+
+    has_many :book_formats,
+      Gutenberg.Books.BookFormat
 
     many_to_many :languages,
       Gutenberg.Languages.Language,
-      join_through: Gutenberg.Books.BookLanguage,
-      on_delete: :delete_all
+      join_through: Gutenberg.Books.BookLanguage
 
     many_to_many :subjects,
       Gutenberg.Subjects.Subject,
-      join_through: Gutenberg.Books.BookSubject,
-      on_delete: :delete_all
+      join_through: Gutenberg.Books.BookSubject
 
     timestamps()
   end

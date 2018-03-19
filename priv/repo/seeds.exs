@@ -64,18 +64,8 @@ books
 books
 |> Enum.filter(&(!is_nil(&1["title"]) && String.length(&1["title"]) < 200))
 |> Enum.uniq_by(&(&1["title"]))
-|> Enum.take(1000)
+|> Enum.take(2000)
 |> Enum.each(fn(book) ->
-    IO.puts(book["title"])
-
-    # TODO: url
-
-    # mime_types = Map.keys(books["formats"])
-    formats = Repo.all(
-      from formats in Formats.Format,
-      where: formats.mime_type in ^Map.keys(book["formats"])
-    )
-
     subjects = Repo.all(
       from subjects in Subjects.Subject,
       where: subjects.name in ^book["subjects"]
@@ -96,13 +86,26 @@ books
 
 
 
-    %Books.Book{title: book["title"]}
+    db_book = %Books.Book{title: book["title"]}
     |> Repo.insert!
+
+    db_book
     |> Repo.preload([:formats, :subjects, :languages, :authors])
     |> Ecto.Changeset.change()
-    |> Changeset.put_assoc(:formats, formats)
     |> Changeset.put_assoc(:subjects, subjects)
     |> Changeset.put_assoc(:languages, languages)
     |> Changeset.put_assoc(:authors, authors)
     |> Repo.update!()
+
+
+    Repo.all(
+      from formats in Formats.Format,
+      where: formats.mime_type in ^Map.keys(book["formats"])
+    ) |> Enum.each(fn (format) ->
+      %Books.BookFormat{
+        book_id: db_book.id,
+        format_id: format.id,
+        url: book["formats"][format.mime_type]
+      } |> Repo.insert!
+    end)
   end)
