@@ -23,6 +23,8 @@
   </table>
   <%= for page <- (1..@total_pages) do %>
     <%= link page,
-      to: book_path(@conn, :index, Map.put(@conn.query_params, :page, page)) %>
+      to: book_path(@conn, :index, Map.put(@conn.query_params, :page, page)),
+      class: (if page == @current_page, do: "current_page", else: "")
+    %>
   <% end %>
 </div>
