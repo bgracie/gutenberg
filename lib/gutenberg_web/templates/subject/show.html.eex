@@ -15,7 +15,7 @@
             <td><%= link book.title, to: book_path(@conn, :show, book) %></td>
             <td>
               <%= link author(book).name,
-                to: book_path(@conn, :show, author(book))
+                to: author_path(@conn, :show, author(book))
               %>
             </td>
           </tr>

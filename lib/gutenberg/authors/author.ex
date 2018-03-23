@@ -8,6 +8,10 @@ defmodule Gutenberg.Authors.Author do
     field :year_of_birth, :integer
     field :year_of_death, :integer
 
+    many_to_many :books,
+      Gutenberg.Books.Book,
+      join_through: Gutenberg.Books.BookAuthor
+
     timestamps()
   end
 

@@ -27,6 +27,7 @@ defmodule GutenbergWeb.AuthorController do
 
   def show(conn, %{"id" => id}) do
     author = Authors.get_author!(id)
+      |> Gutenberg.Repo.preload([:books])
     render(conn, "show.html", author: author)
   end
 
