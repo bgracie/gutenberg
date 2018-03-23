@@ -20,7 +20,7 @@
               Gutenberg
             </a>
             <%= form_for @conn, "/search", [as: :search], fn f -> %>
-              <%= text_input f, :term %>
+              <%= text_input f, :term, value: "" %>
               <%= submit "Search" %>
             <% end %>
           </div>

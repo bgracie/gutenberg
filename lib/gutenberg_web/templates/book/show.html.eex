@@ -3,8 +3,31 @@
 
   <h2><%= @book.title %></h2>
 
-  <ul>
+  <h4>by <%= link Enum.at(@book.authors, 0).name,
+    to: author_path(@conn, :show, Enum.at(@book.authors, 0)) %></h4>
 
+  <h4>Subjects:</h4>
+  <ul>
+    <%= for subject <- @book.subjects do %>
+      <li><%= link subject.name, to: subject_path(@conn, :show, subject) %></li>
+    <% end %>
+  </ul>
+
+  <h4>Languages:</h4>
+  <ul>
+    <%= for language <- @book.languages do %>
+      <li><%= language.code %></li>
+    <% end %>
+  </ul>
+
+  <h4>Formats:</h4>
+  <ul>
+    <%= for book_format <- @book.book_formats do %>
+      <li>
+        <%= book_format.format.mime_type %>
+        (<%= link "View", to: book_format.url %>)
+      </li>
+    <% end %>
   </ul>
 
 </div>

@@ -49,6 +49,9 @@ defmodule GutenbergWeb.BookController do
 
   def show(conn, %{"id" => id}) do
     book = Books.get_book!(id)
+      |> Repo.preload([:authors, :subjects, :languages])
+      |> Repo.preload([book_formats: :format])
+
     render(conn, "show.html", book: book)
   end
 
