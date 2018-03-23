@@ -16,20 +16,8 @@
       <header class="header">
         <nav role="navigation">
           <div class="nav">
-            <a class="nav__site_name">
+            <a class="nav__site_name" href="/">
               Gutenberg
-            </a>
-            <a class="nav__entry">
-              Books
-            </a>
-            <a class="nav__entry">
-              Authors
-            </a>
-            <a class="nav__entry">
-              Subjects
-            </a>
-            <a class="nav__entry">
-              Formats
             </a>
           </div>
         </nav>

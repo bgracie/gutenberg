@@ -22,6 +22,7 @@ defmodule GutenbergWeb.Router do
     resources "/languages", LanguageController
     resources "/subjects", SubjectController
 
+    post "/search", PageController, :search
     get "/", PageController, :index
   end
 

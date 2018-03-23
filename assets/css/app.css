@@ -6,12 +6,12 @@
   justify-content: flex-end;
 }
 
-.nav__entry {
+/* .nav__entry {
   box-sizing: border-box;
   width: 100px;
   padding-top: 10px;
   padding-bottom: 10px;
-}
+} */
 
 .nav__site_name {
   padding-left: 20px;

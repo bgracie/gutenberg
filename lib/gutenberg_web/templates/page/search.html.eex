@@ -1,0 +1,13 @@
+<div class="main__container">
+  <%= form_for @conn, "/search", [as: :search], fn f -> %>
+    <%= text_input f, :term %>
+    <%= submit "Search" %>
+  <% end %>
+
+  <ul>
+    <%= for result <- @results do %>
+      <li><%= link "#{result.label} [#{result.type}]", to: result.link %></li>
+    <% end %>
+  </ul>
+
+</div>
