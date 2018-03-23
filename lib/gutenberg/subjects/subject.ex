@@ -6,6 +6,10 @@ defmodule Gutenberg.Subjects.Subject do
   schema "subjects" do
     field :name, :string
 
+    many_to_many :books,
+      Gutenberg.Books.Book,
+      join_through: Gutenberg.Books.BookSubject
+
     timestamps()
   end
 

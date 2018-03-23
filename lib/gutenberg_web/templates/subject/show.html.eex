@@ -1,13 +1,25 @@
-<h2>Show Subject</h2>
+<div class="main__container">
+  <h2><%= @subject.name %></h2>
 
-<ul>
-
-  <li>
-    <strong>Name:</strong>
-    <%= @subject.name %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: subject_path(@conn, :edit, @subject) %></span>
-<span><%= link "Back", to: subject_path(@conn, :index) %></span>
+  <h4>Related Books:</h4>
+  <table class="pure-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for book <- @subject.books do %>
+          <tr>
+            <td><%= link book.title, to: book_path(@conn, :show, book) %></td>
+            <td>
+              <%= link author(book).name,
+                to: book_path(@conn, :show, author(book))
+              %>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -27,6 +27,7 @@ defmodule GutenbergWeb.SubjectController do
 
   def show(conn, %{"id" => id}) do
     subject = Subjects.get_subject!(id)
+      |> Gutenberg.Repo.preload([books: :authors])
     render(conn, "show.html", subject: subject)
   end
 
