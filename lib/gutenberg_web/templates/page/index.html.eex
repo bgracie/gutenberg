@@ -1,6 +1,9 @@
-<h2>Search books, authors, and subjects:</h2>
 
-<%= form_for @conn, "/search", [as: :search], fn f -> %>
-  <%= text_input f, :term %>
-  <%= submit "Search" %>
-<% end %>
+<div class="front__search_container">
+  <h2 class="front__banner">Gutenberg</h2>
+  <%= form_for @conn, "/search", [as: :search, class: "front__search_form"], fn (f) -> %>
+    <%= text_input f, :term, class: "front__search_term" %>
+    <br>
+    <%= submit "Search", class: "front__search_button" %>
+  <% end %>
+</div>

@@ -16,13 +16,6 @@
   padding-top: 2px;
 }
 
-/* .nav__entry {
-  box-sizing: border-box;
-  width: 100px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-} */
-
 .nav__site_name {
   padding-left: 20px;
   margin-right: auto;
@@ -43,4 +36,27 @@
 
 .current_page {
   color: red;
+}
+
+.front__banner {
+  margin-left: auto;
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+.front__search_term {
+  margin-bottom: 20px;
+  width: 500px;
+}
+
+.front__search_form {
+  text-align: center;
+}
+
+.front__search_container {
+  top: 30%;
+  position: absolute;
+  width: 100%;
 }
