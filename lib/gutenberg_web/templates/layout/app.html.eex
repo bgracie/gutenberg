@@ -19,9 +19,9 @@
             <a class="nav__site_name" href="/">
               Gutenberg
             </a>
-            <%= form_for @conn, "/search", [as: :search], fn f -> %>
+            <%= form_for @conn, "/search", [as: :search, class: "nav__search"], fn f -> %>
               <%= text_input f, :term, value: "" %>
-              <%= submit "Search" %>
+              <%= submit "Search", class: "nav__search_submit" %>
             <% end %>
           </div>
         </nav>
