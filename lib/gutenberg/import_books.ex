@@ -22,6 +22,20 @@ defmodule Gutenberg.ImportBooks do
     |> Enum.uniq
   end
 
+  def subjects(books) do
+    books
+    |> Enum.map(&(Map.get(&1, "subjects", [])))
+    |> List.flatten()
+    |> Enum.uniq()
+  end
+
+  def authors(books) do
+    books
+    |> Enum.map(&(Map.get(&1, "author", [])))
+    |> List.flatten()
+    |> Enum.uniq()
+  end
+
   def typeof(self) do
     cond do
       is_float(self)    -> "float"

@@ -6,7 +6,7 @@ defmodule Gutenberg.Formats.Format do
   schema "formats" do
     field :mime_type, :string
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc false

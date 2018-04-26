@@ -5,7 +5,7 @@ defmodule Gutenberg.Repo.Migrations.CreateBooks do
     create table(:books) do
       add :title, :string, null: false, size: 500
 
-      timestamps()
+      timestamps(type: :timestamptz)
     end
 
     create unique_index(:books, [:title])

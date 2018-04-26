@@ -12,7 +12,7 @@ defmodule Gutenberg.Authors.Author do
       Gutenberg.Books.Book,
       join_through: Gutenberg.Books.BookAuthor
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc false

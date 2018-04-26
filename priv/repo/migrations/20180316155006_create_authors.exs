@@ -7,7 +7,7 @@ defmodule Gutenberg.Repo.Migrations.CreateAuthors do
       add :year_of_birth, :integer
       add :year_of_death, :integer
 
-      timestamps()
+      timestamps(type: :timestamptz)
     end
 
     create unique_index(:authors, [:name])

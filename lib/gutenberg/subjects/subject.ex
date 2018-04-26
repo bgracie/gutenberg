@@ -10,7 +10,7 @@ defmodule Gutenberg.Subjects.Subject do
       Gutenberg.Books.Book,
       join_through: Gutenberg.Books.BookSubject
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc false

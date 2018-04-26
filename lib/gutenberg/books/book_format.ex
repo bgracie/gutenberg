@@ -8,6 +8,6 @@ defmodule Gutenberg.Books.BookFormat do
     belongs_to :format, Gutenberg.Formats.Format
     field :url, :string
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 end

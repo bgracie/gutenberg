@@ -5,7 +5,7 @@ defmodule Gutenberg.Repo.Migrations.CreateFormats do
     create table(:formats) do
       add :mime_type, :string, null: false
 
-      timestamps()
+      timestamps(type: :timestamptz)
     end
 
     create unique_index(:formats, [:mime_type])

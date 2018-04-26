@@ -6,7 +6,7 @@ defmodule Gutenberg.Languages.Language do
   schema "languages" do
     field :code, :string
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc false

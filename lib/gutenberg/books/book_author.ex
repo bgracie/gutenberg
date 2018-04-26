@@ -7,6 +7,6 @@ defmodule Gutenberg.Books.BookAuthor do
     belongs_to :book, Gutenberg.Books.Book
     belongs_to :author, Gutenberg.Authors.Author
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 end

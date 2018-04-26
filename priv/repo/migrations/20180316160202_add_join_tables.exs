@@ -6,7 +6,7 @@ defmodule Gutenberg.Repo.Migrations.AddJoinTables do
       add :book_id, references("books"), null: false
       add :subject_id, references("subjects"), null: false
 
-      timestamps()
+      timestamps(type: :timestamptz)
     end
 
     create unique_index(:book_subjects, [:book_id, :subject_id])
@@ -15,7 +15,7 @@ defmodule Gutenberg.Repo.Migrations.AddJoinTables do
       add :book_id, references("books"), null: false
       add :author_id, references("authors"), null: false
 
-      timestamps()
+      timestamps(type: :timestamptz)
     end
 
     create unique_index(:book_authors, [:book_id, :author_id])
@@ -24,7 +24,7 @@ defmodule Gutenberg.Repo.Migrations.AddJoinTables do
       add :book_id, references("books"), null: false
       add :language_id, references("languages"), null: false
 
-      timestamps()
+      timestamps(type: :timestamptz)
     end
 
     create unique_index(:book_languages, [:book_id, :language_id])
@@ -34,7 +34,7 @@ defmodule Gutenberg.Repo.Migrations.AddJoinTables do
       add :format_id, references("formats"), null: false
       add :url, :string, null: false
 
-      timestamps()
+      timestamps(type: :timestamptz)
     end
 
     create unique_index(:book_formats, [:book_id, :format_id])

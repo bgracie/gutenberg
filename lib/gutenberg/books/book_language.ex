@@ -7,6 +7,6 @@ defmodule Gutenberg.Books.BookLanguage do
     belongs_to :book, Gutenberg.Books.Book
     belongs_to :language, Gutenberg.Languages.Language
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 end
