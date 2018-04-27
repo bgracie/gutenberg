@@ -1,6 +1,10 @@
 defmodule GutenbergWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :gutenberg
 
+  if Application.get_env(:gutenberg, :sql_sandbox) do
+    plug Phoenix.Ecto.SQL.Sandbox
+  end
+
   socket "/socket", GutenbergWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.

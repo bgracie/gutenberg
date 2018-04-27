@@ -42,7 +42,8 @@ defmodule Gutenberg.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:poison, "~> 3.1"},
-      {:domain_planner, path: "~/Code/domain_planner"}
+      {:domain_planner, path: "~/Code/domain_planner"},
+      {:wallaby, "~> 0.19.2", [runtime: false, only: :test]}
     ]
   end
 
@@ -56,7 +57,17 @@ defmodule Gutenberg.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+      "test": [
+        "assets.compile --quiet",
+        "ecto.create --quiet",
+        "ecto.migrate",
+        "test"
+      ],
+      "assets.compile": &compile_assets/1
     ]
+  end
+
+  defp compile_assets(_) do
+    Mix.shell.cmd("assets/node_modules/brunch/bin/brunch build assets/")
   end
 end

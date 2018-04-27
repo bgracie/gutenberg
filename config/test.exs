@@ -4,10 +4,12 @@ use Mix.Config
 # you can enable the server option below.
 config :gutenberg, GutenbergWeb.Endpoint,
   http: [port: 4001],
-  server: false
+  server: true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :gutenberg, :sql_sandbox, true
 
 # Configure your database
 config :gutenberg, Gutenberg.Repo,
