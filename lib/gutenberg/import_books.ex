@@ -6,15 +6,6 @@ defmodule Gutenberg.ImportBooks do
     |> Map.values()
   end
 
-  @doc """
-  ## Examples
-
-      iex(9)> Gutenberg.ImportBooks.fields(Gutenberg.ImportBooks.exec())
-      ["LCC", "author", "authoryearofbirth", "authoryearofdeath",
-      "downloads", "formats", "id", "language", "subjects",
-      "title", "type"]
-
-  """
   def fields(books) do
     books
     |> Enum.map(&Map.keys/1)
@@ -52,25 +43,6 @@ defmodule Gutenberg.ImportBooks do
     end
   end
 
-  @doc """
-  ## Examples
-
-      iex(14)> Gutenberg.ImportBooks.fields_types(Gutenberg.ImportBooks.exec())
-      %{
-        "LCC" => ["list"],
-        "author" => ["binary", "nil"],
-        "authoryearofbirth" => ["number", "nil"],
-        "authoryearofdeath" => ["number", "nil"],
-        "downloads" => ["number", "nil"],
-        "formats" => ["map"],
-        "id" => ["number"],
-        "language" => ["list", "nil"],
-        "subjects" => ["list"],
-        "title" => ["binary", "nil"],
-        "type" => ["binary"]
-      }
-
-  """
   def fields_types(books) do
     fields(books)
     |> Map.new(&field_types(&1, books))
