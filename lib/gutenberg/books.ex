@@ -6,18 +6,18 @@ defmodule Gutenberg.Books do
   import Ecto.Query, warn: false
   alias Gutenberg.Repo
 
-  alias Gutenberg.Books.Book
+  alias Gutenberg.Books.Schemas.Book
 
   @doc """
   Returns the list of books.
 
   ## Examples
 
-      iex> list_books()
+      iex> list()
       [%Book{}, ...]
 
   """
-  def list_books do
+  def list do
     Repo.all(Book)
   end
 
@@ -28,28 +28,28 @@ defmodule Gutenberg.Books do
 
   ## Examples
 
-      iex> get_book!(123)
+      iex> get!(123)
       %Book{}
 
-      iex> get_book!(456)
+      iex> get!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_book!(id), do: Repo.get!(Book, id)
+  def get!(id), do: Repo.get!(Book, id)
 
   @doc """
   Creates a book.
 
   ## Examples
 
-      iex> create_book(%{field: value})
+      iex> create(%{field: value})
       {:ok, %Book{}}
 
-      iex> create_book(%{field: bad_value})
+      iex> create(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_book(attrs \\ %{}) do
+  def create(attrs \\ %{}) do
     %Book{}
     |> Book.changeset(attrs)
     |> Repo.insert()

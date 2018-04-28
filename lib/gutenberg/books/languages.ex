@@ -1,4 +1,4 @@
-defmodule Gutenberg.Languages do
+defmodule Gutenberg.Books.Languages do
   @moduledoc """
   The Languages context.
   """
@@ -6,18 +6,18 @@ defmodule Gutenberg.Languages do
   import Ecto.Query, warn: false
   alias Gutenberg.Repo
 
-  alias Gutenberg.Languages.Language
+  alias Gutenberg.Books.Schemas.Language
 
   @doc """
   Returns the list of languages.
 
   ## Examples
 
-      iex> list_languages()
+      iex> list()
       [%Language{}, ...]
 
   """
-  def list_languages do
+  def list do
     Repo.all(Language)
   end
 
@@ -28,28 +28,28 @@ defmodule Gutenberg.Languages do
 
   ## Examples
 
-      iex> get_language!(123)
+      iex> get!(123)
       %Language{}
 
-      iex> get_language!(456)
+      iex> get!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_language!(id), do: Repo.get!(Language, id)
+  def get!(id), do: Repo.get!(Language, id)
 
   @doc """
   Creates a language.
 
   ## Examples
 
-      iex> create_language(%{field: value})
+      iex> create(%{field: value})
       {:ok, %Language{}}
 
-      iex> create_language(%{field: bad_value})
+      iex> create(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_language(attrs \\ %{}) do
+  def create(attrs \\ %{}) do
     %Language{}
     |> Language.changeset(attrs)
     |> Repo.insert()

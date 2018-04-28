@@ -1,7 +1,7 @@
-defmodule Gutenberg.FormatsTest do
+defmodule Gutenberg.Books.FormatsTest do
   use Gutenberg.DataCase
 
-  alias Gutenberg.Formats
+  alias Gutenberg.Books.Formats
 
   describe "formats" do
     @valid_attrs %{mime_type: "some mime_type"}
@@ -10,19 +10,19 @@ defmodule Gutenberg.FormatsTest do
       {:ok, format} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Formats.create_format()
+        |> Formats.create()
 
       format
     end
 
-    test "list_formats/0 returns all formats" do
+    test "list/0 returns all formats" do
       format = format_fixture()
-      assert Formats.list_formats() == [format]
+      assert Formats.list() == [format]
     end
 
-    test "get_format!/1 returns the format with given id" do
+    test "get!/1 returns the format with given id" do
       format = format_fixture()
-      assert Formats.get_format!(format.id) == format
+      assert Formats.get!(format.id) == format
     end
   end
 end

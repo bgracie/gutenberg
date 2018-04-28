@@ -25,7 +25,7 @@ books
   |> Enum.map(&(Map.merge(%{title: &1["title"]}, Repo.now_timestamps())))
   |> (&(Repo.chunked_insert_all(Books.Book, &1))).()
 
-stored_books = Books.list_books()
+stored_books = Books.list()
   |> Map.new(fn (book) -> { book.title, book.id } end)
 
 # Seed FORMATS
@@ -38,7 +38,7 @@ books
 |> Enum.map(&(Map.merge(%{mime_type: &1}, Repo.now_timestamps())))
 |> (&(Repo.chunked_insert_all(Formats.Format, &1))).()
 
-stored_formats = Formats.list_formats()
+stored_formats = Formats.list()
   |> Map.new(fn (format) -> { format.mime_type, format.id } end)
 
 books
@@ -62,7 +62,7 @@ books
 |> Enum.map(&(Map.merge(%{name: &1}, Repo.now_timestamps())))
 |> (&(Repo.chunked_insert_all(Subjects.Subject, &1))).()
 
-stored_subjects = Subjects.list_subjects()
+stored_subjects = Subjects.list()
   |> Map.new(fn (subject) -> { subject.name, subject.id } end)
 
 books
@@ -86,7 +86,7 @@ books
 |> Enum.map(&(Map.merge(%{code: &1}, Repo.now_timestamps())))
 |> (&(Repo.chunked_insert_all(Languages.Language, &1))).()
 
-stored_languages = Languages.list_languages()
+stored_languages = Languages.list()
   |> Map.new(fn (language) -> { language.code, language.id } end)
 
 books
@@ -109,7 +109,7 @@ books
 |> Enum.map(&(Map.merge(%{name: &1}, Repo.now_timestamps())))
 |> (&(Repo.chunked_insert_all(Authors.Author, &1))).()
 
-stored_authors = Authors.list_authors()
+stored_authors = Books.Authors.list()
   |> Map.new(fn (author) -> { author.name, author.id } end)
 
 books

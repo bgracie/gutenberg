@@ -3,7 +3,7 @@ defmodule GutenbergWeb.BookController do
 
   import Ecto.Query, warn: false
   alias Gutenberg.Books
-  alias Gutenberg.Books.Book
+  alias Gutenberg.Books.Schemas.Book
   alias Gutenberg.Repo
 
   def index(conn, params) do
@@ -32,7 +32,7 @@ defmodule GutenbergWeb.BookController do
   end
 
   def show(conn, %{"id" => id}) do
-    book = Books.get_book!(id)
+    book = Books.get!(id)
       |> Repo.preload([:authors, :subjects, :languages])
       |> Repo.preload([book_formats: :format])
 

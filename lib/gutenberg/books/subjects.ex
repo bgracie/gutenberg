@@ -1,4 +1,4 @@
-defmodule Gutenberg.Subjects do
+defmodule Gutenberg.Books.Subjects do
   @moduledoc """
   The Subjects context.
   """
@@ -6,18 +6,18 @@ defmodule Gutenberg.Subjects do
   import Ecto.Query, warn: false
   alias Gutenberg.Repo
 
-  alias Gutenberg.Subjects.Subject
+  alias Gutenberg.Books.Schemas.Subject
 
   @doc """
   Returns the list of subjects.
 
   ## Examples
 
-      iex> list_subjects()
+      iex> list()
       [%Subject{}, ...]
 
   """
-  def list_subjects do
+  def list do
     Repo.all(Subject)
   end
 
@@ -28,28 +28,28 @@ defmodule Gutenberg.Subjects do
 
   ## Examples
 
-      iex> get_subject!(123)
+      iex> get!(123)
       %Subject{}
 
-      iex> get_subject!(456)
+      iex> get!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_subject!(id), do: Repo.get!(Subject, id)
+  def get!(id), do: Repo.get!(Subject, id)
 
   @doc """
   Creates a subject.
 
   ## Examples
 
-      iex> create_subject(%{field: value})
+      iex> create(%{field: value})
       {:ok, %Subject{}}
 
-      iex> create_subject(%{field: bad_value})
+      iex> create(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_subject(attrs \\ %{}) do
+  def create(attrs \\ %{}) do
     %Subject{}
     |> Subject.changeset(attrs)
     |> Repo.insert()

@@ -1,4 +1,4 @@
-defmodule Gutenberg.BooksTest do
+defmodule Gutenberg.Books.BooksTest do
   use Gutenberg.DataCase
 
   alias Gutenberg.Books
@@ -10,19 +10,19 @@ defmodule Gutenberg.BooksTest do
       {:ok, book} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Books.create_book()
+        |> Books.create()
 
       book
     end
 
-    test "list_books/0 returns all books" do
+    test "list/0 returns all books" do
       book = book_fixture()
-      assert Books.list_books() == [book]
+      assert Books.list() == [book]
     end
 
-    test "get_book!/1 returns the book with given id" do
+    test "get!/1 returns the book with given id" do
       book = book_fixture()
-      assert Books.get_book!(book.id) == book
+      assert Books.get!(book.id) == book
     end
   end
 end

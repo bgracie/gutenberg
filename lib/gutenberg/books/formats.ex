@@ -1,4 +1,4 @@
-defmodule Gutenberg.Formats do
+defmodule Gutenberg.Books.Formats do
   @moduledoc """
   The Formats context.
   """
@@ -6,18 +6,18 @@ defmodule Gutenberg.Formats do
   import Ecto.Query, warn: false
   alias Gutenberg.Repo
 
-  alias Gutenberg.Formats.Format
+  alias Gutenberg.Books.Schemas.Format
 
   @doc """
   Returns the list of formats.
 
   ## Examples
 
-      iex> list_formats()
+      iex> list()
       [%Format{}, ...]
 
   """
-  def list_formats do
+  def list do
     Repo.all(Format)
   end
 
@@ -28,16 +28,16 @@ defmodule Gutenberg.Formats do
 
   ## Examples
 
-      iex> get_format!(123)
+      iex> get!(123)
       %Format{}
 
-      iex> get_format!(456)
+      iex> get!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_format!(id), do: Repo.get!(Format, id)
+  def get!(id), do: Repo.get!(Format, id)
 
-  def create_format(attrs \\ %{}) do
+  def create(attrs \\ %{}) do
     %Format{}
     |> Format.changeset(attrs)
     |> Repo.insert()

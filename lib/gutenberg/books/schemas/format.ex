@@ -1,4 +1,4 @@
-defmodule Gutenberg.Formats.Format do
+defmodule Gutenberg.Books.Schemas.Format do
   use Ecto.Schema
   import Ecto.Changeset
 

@@ -1,7 +1,7 @@
-defmodule Gutenberg.SubjectsTest do
+defmodule Gutenberg.Books.SubjectsTest do
   use Gutenberg.DataCase
 
-  alias Gutenberg.Subjects
+  alias Gutenberg.Books.Subjects
 
   describe "subjects" do
     @valid_attrs %{name: "some name"}
@@ -10,19 +10,19 @@ defmodule Gutenberg.SubjectsTest do
       {:ok, subject} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Subjects.create_subject()
+        |> Subjects.create()
 
       subject
     end
 
-    test "list_subjects/0 returns all subjects" do
+    test "list/0 returns all subjects" do
       subject = subject_fixture()
-      assert Subjects.list_subjects() == [subject]
+      assert Subjects.list() == [subject]
     end
 
-    test "get_subject!/1 returns the subject with given id" do
+    test "get!/1 returns the subject with given id" do
       subject = subject_fixture()
-      assert Subjects.get_subject!(subject.id) == subject
+      assert Subjects.get!(subject.id) == subject
     end
   end
 end

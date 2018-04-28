@@ -1,7 +1,5 @@
-defmodule Gutenberg.AuthorsTest do
+defmodule Gutenberg.Books.AuthorsTest do
   use Gutenberg.DataCase
-
-  alias Gutenberg.Authors
 
   describe "authors" do
     @valid_attrs %{name: "some name", year_of_birth: 42, year_of_death: 42}
@@ -10,19 +8,19 @@ defmodule Gutenberg.AuthorsTest do
       {:ok, author} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Authors.create_author()
+        |> Gutenberg.Books.Authors.create()
 
       author
     end
 
-    test "list_authors/0 returns all authors" do
+    test "list/0 returns all authors" do
       author = author_fixture()
-      assert Authors.list_authors() == [author]
+      assert Gutenberg.Books.Authors.list() == [author]
     end
 
-    test "get_author!/1 returns the author with given id" do
+    test "get!/1 returns the author with given id" do
       author = author_fixture()
-      assert Authors.get_author!(author.id) == author
+      assert Gutenberg.Books.Authors.get!(author.id) == author
     end
   end
 end

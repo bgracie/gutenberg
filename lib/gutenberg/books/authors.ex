@@ -1,4 +1,4 @@
-defmodule Gutenberg.Authors do
+defmodule Gutenberg.Books.Authors do
   @moduledoc """
   The Authors context.
   """
@@ -6,18 +6,18 @@ defmodule Gutenberg.Authors do
   import Ecto.Query, warn: false
   alias Gutenberg.Repo
 
-  alias Gutenberg.Authors.Author
+  alias Gutenberg.Books.Schemas.Author
 
   @doc """
   Returns the list of authors.
 
   ## Examples
 
-      iex> list_authors()
+      iex> list()
       [%Author{}, ...]
 
   """
-  def list_authors do
+  def list do
     Repo.all(Author)
   end
 
@@ -28,28 +28,28 @@ defmodule Gutenberg.Authors do
 
   ## Examples
 
-      iex> get_author!(123)
+      iex> get!(123)
       %Author{}
 
-      iex> get_author!(456)
+      iex> get!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_author!(id), do: Repo.get!(Author, id)
+  def get!(id), do: Repo.get!(Author, id)
 
   @doc """
   Creates a author.
 
   ## Examples
 
-      iex> create_author(%{field: value})
+      iex> create(%{field: value})
       {:ok, %Author{}}
 
-      iex> create_author(%{field: bad_value})
+      iex> create(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_author(attrs \\ %{}) do
+  def create(attrs \\ %{}) do
     %Author{}
     |> Author.changeset(attrs)
     |> Repo.insert()
