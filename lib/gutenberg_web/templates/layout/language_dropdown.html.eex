@@ -1,0 +1,14 @@
+<div class="pure-menu pure-menu-horizontal">
+  <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+    <a href="#" class="pure-menu-link"><%= locale() %></a>
+    <ul class="pure-menu-children">
+      <%=  for l <- other_locales() do %>
+        <li class="pure-menu-item">
+          <a href="<%= with_new_locale(@conn, l)%>"  class="pure-menu-link locale_link">
+            <%= l %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+</div>

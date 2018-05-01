@@ -7,9 +7,4 @@ defmodule GutenbergWeb.LanguageController do
     languages = Languages.list()
     render(conn, "index.html", languages: languages)
   end
-
-  def show(conn, %{"id" => id}) do
-    language = Languages.get!(id)
-    render(conn, "show.html", language: language)
-  end
 end

@@ -39,11 +39,12 @@ defmodule Gutenberg.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
+      {:gettext, "0.13.1"},
       {:cowboy, "~> 1.0"},
       {:poison, "~> 3.1"},
       {:domain_planner, path: "~/Code/domain_planner"},
-      {:wallaby, "~> 0.19.2", [runtime: false, only: :test]}
+      {:wallaby, "~> 0.19.2", [runtime: false, only: :test]},
+      {:set_locale, "~> 0.2.4"}
     ]
   end
 

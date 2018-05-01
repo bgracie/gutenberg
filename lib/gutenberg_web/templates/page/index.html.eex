@@ -1,7 +1,7 @@
 
 <div class="front__search_container">
-  <h2 class="front__banner">Gutenberg</h2>
-  <%= form_for @conn, "/search", [as: :search, class: "front__search_form"], fn (f) -> %>
+  <h2 class="front__banner">Project Gutenberg</h2>
+  <%= form_for @conn, "/#{locale()}/search", [as: :search, class: "front__search_form"], fn (f) -> %>
     <%= text_input f, :term, class: "front__search_term" %>
     <br>
     <%= submit "Search", class: "front__search_button" %>

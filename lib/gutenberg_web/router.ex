@@ -7,6 +7,10 @@ defmodule GutenbergWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug SetLocale,
+      gettext: GutenbergWeb.Gettext,
+      default_locale: "en",
+      cookie_key: "project_locale"
   end
 
   pipeline :api do
@@ -14,7 +18,15 @@ defmodule GutenbergWeb.Router do
   end
 
   scope "/", GutenbergWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
+
+    # Will never be called
+    get "/", PageController, :dummy
+  end
+
+
+  scope "/:locale", GutenbergWeb do
+    pipe_through :browser
 
     resources "/books", BookController
     resources "/authors", AuthorController

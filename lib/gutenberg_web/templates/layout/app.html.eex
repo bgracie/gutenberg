@@ -17,11 +17,12 @@
         <nav role="navigation">
           <div class="nav">
             <a class="nav__site_name" href="/">
-              Gutenberg
+              Project Gutenberg
             </a>
-            <%= form_for @conn, "/search", [as: :search, class: "nav__search"], fn f -> %>
+            <%= render GutenbergWeb.LayoutView, "language_dropdown.html", conn: @conn %>
+            <%= form_for @conn, "/#{locale()}/search", [as: :search, class: "nav__search"], fn f -> %>
               <%= text_input f, :term, value: "" %>
-              <%= submit "Search", class: "nav__search_submit" %>
+              <%= submit(gettext("Search"), class: "nav__search_submit") %>
             <% end %>
           </div>
         </nav>

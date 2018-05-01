@@ -21,4 +21,12 @@ defmodule GutenbergWeb.Gettext do
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
   use Gettext, otp_app: :gutenberg
+
+  def locale() do
+    Gettext.get_locale(GutenbergWeb.Gettext)
+  end
+
+  def locales() do
+    Gettext.known_locales(GutenbergWeb.Gettext)
+  end
 end

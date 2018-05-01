@@ -4,7 +4,7 @@
   <h4>Wrote:</h4>
   <ul>
     <%= for book <- @author.books do %>
-      <li><%= link book.title, to: book_path(@conn, :show, book) %></li>
+      <li><%= link book.title, to: book_path(@conn, :show, locale(), book) %></li>
     <% end %>
   </ul>
 </div>

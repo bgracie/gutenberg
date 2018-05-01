@@ -8,4 +8,11 @@ defmodule GutenbergWeb.HomepageTest do
     |> visit("/")
     |> assert_has(css(".front__banner", text: "Gutenberg"))
   end
+
+  test "can change locale", %{session: session} do
+    session
+    |> visit("/")
+    |> click(css(".locale_link", text: "fr"))
+    |> assert_has(css(".front__banner", text: "Gutenberg"))
+  end
 end

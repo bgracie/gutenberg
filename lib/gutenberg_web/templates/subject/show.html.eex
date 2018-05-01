@@ -12,10 +12,10 @@
     <tbody>
       <%= for book <- @subject.books do %>
           <tr>
-            <td><%= link book.title, to: book_path(@conn, :show, book) %></td>
+            <td><%= link book.title, to: book_path(@conn, :show, locale(), book) %></td>
             <td>
               <%= link author(book).name,
-                to: author_path(@conn, :show, author(book))
+                to: author_path(@conn, :show, locale(), author(book))
               %>
             </td>
           </tr>
