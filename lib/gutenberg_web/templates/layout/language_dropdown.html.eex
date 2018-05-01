@@ -1,6 +1,6 @@
 <div class="pure-menu pure-menu-horizontal">
   <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-    <a href="#" class="pure-menu-link"><%= locale() %></a>
+    <a href="#" class="pure-menu-link locale_dropdown_link"><%= locale() %></a>
     <ul class="pure-menu-children">
       <%=  for l <- other_locales() do %>
         <li class="pure-menu-item">
