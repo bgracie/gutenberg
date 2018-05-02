@@ -6,15 +6,15 @@ defmodule GutenbergWeb.HomepageTest do
   test "can visit the homepage", %{session: session} do
     session
     |> visit("/")
-    |> assert_has(css(".front__banner", text: "Gutenberg"))
-    |> assert_has(css(".footer__link", text: "Volunteer"))
+    |> assert_has(css("._front__banner", text: "Gutenberg"))
+    |> assert_has(css("._footer__link", text: "Volunteer"))
   end
 
   test "can change locale", %{session: session} do
     session
     |> visit("/")
-    |> click(css(".locale_dropdown_link", text: "en"))
-    |> click(css(".locale_link", text: "fr"))
-    |> assert_has(css(".front__search_button", text: "Chercher"))
+    |> click(css("._locale_dropdown__toggle", text: "en"))
+    |> click(css("._locale_dropdown__link", text: "fr"))
+    |> assert_has(css("._front__search_button", text: "Chercher"))
   end
 end

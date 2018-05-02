@@ -12,9 +12,7 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
-import setupPureDropdown from "./setup_pure_dropdown"
-
-setupPureDropdown(window, window.document);
+// import "bootstrap";
 
 // Import local files
 //

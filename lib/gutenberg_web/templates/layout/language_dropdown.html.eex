@@ -1,14 +1,10 @@
-<div class="pure-menu pure-menu-horizontal">
-  <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-    <a href="#" class="pure-menu-link locale_dropdown_link"><%= locale() %></a>
-    <ul class="pure-menu-children">
-      <%=  for l <- other_locales() do %>
-        <li class="pure-menu-item">
-          <a href="<%= with_new_locale(@conn, l)%>"  class="pure-menu-link locale_link">
-            <%= l %>
-          </a>
-        </li>
-      <% end %>
-    </ul>
-  </li>
+<div class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle _locale_dropdown__toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <%= locale() %>
+  </a>
+  <div class="dropdown-menu">
+    <%=  for l <- other_locales() do %>
+      <a class="dropdown-item _locale_dropdown__link" href="<%= with_new_locale(@conn, l) %>"><%= l %></a>
+    <% end %>
+  </div>
 </div>

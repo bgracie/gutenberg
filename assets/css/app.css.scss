@@ -1,0 +1,45 @@
+/* This file is for your main application css. */
+
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+// Optional
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/nav";
+@import "node_modules/bootstrap/scss/forms";
+@import "node_modules/bootstrap/scss/buttons";
+@import "node_modules/bootstrap/scss/dropdown";
+
+
+.main__container {
+  padding: 30px;
+}
+
+._nav__search {
+  margin-left: auto;
+}
+.front__banner {
+  margin-left: auto;
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+._front__search_term {
+  margin-bottom: 20px;
+  max-width: 300px;
+}
+
+._front__search_col {
+  margin-bottom: 20px;
+  max-width: 100px;
+}
+
+._front__search_form {
+  margin: 0 auto;
+  max-width: 500px;
+  text-align: center;
+}

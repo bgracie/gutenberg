@@ -11,51 +11,44 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body style="height: 100%">
-    <div style="height: 100%">
-      <header class="header">
+  <body>
+    <div>
+      <header class="_header">
         <nav role="navigation">
           <div class="nav">
-            <a class="nav__site_name" href="/">
+            <a class="nav-link" href="/">
               Project Gutenberg
             </a>
             <%= render GutenbergWeb.LayoutView, "language_dropdown.html", conn: @conn %>
-            <%= form_for @conn, "/#{locale()}/search", [as: :search, class: "nav__search pure-form"], fn f -> %>
-              <%= text_input f, :term, value: "" %>
-            <% end %>
+              <%= form_for @conn, "/#{locale()}/search", [as: :search, class: "_nav__search"], fn f -> %>
+                <%= text_input f, :term, value: "", class: "form-control" %>
+              <% end %>
+            </div>
           </div>
         </nav>
       </header>
-      <div class="clearfix"></div>
-
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= if get_flash(@conn, :info) do %>
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <% end %>
+      <%= if get_flash(@conn, :error) do %>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <% end %>
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
 
-      <footer>
-        <div class="pure-menu pure-menu-horizontal">
-          <ul class="pure-menu-list">
-            <li class="pure-menu-item">
-              <a href="#" class="pure-menu-link footer__link">
-                <%= gettext("Terms & Conditions") %>
-              </a>
-            </li>
-            <li class="pure-menu-item">
-              <a href="#" class="pure-menu-link footer__link">
-                <%= gettext("Donate") %>
-              </a>
-            </li>
-            <li class="pure-menu-item">
-              <a href="#" class="pure-menu-link footer__link">
-                <%= gettext("Volunteer") %>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+      <div class="nav">
+        <a href="#" class="nav-link _footer__link">
+          <%= gettext("Terms & Conditions") %>
+        </a>
+        <a href="#" class="nav-link _footer__link">
+          <%= gettext("Donate") %>
+        </a>
+        <a href="#" class="nav-link _footer__link">
+          <%= gettext("Volunteer") %>
+        </a>
+      </div>
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
