@@ -3,7 +3,7 @@ defmodule GutenbergWeb.BookController do
 
   import Ecto.Query, warn: false
   alias Gutenberg.Books
-  alias Gutenberg.Books.Schemas.Book
+  alias Gutenberg.Books.Book
   alias Gutenberg.Repo
 
   def index(conn, params) do

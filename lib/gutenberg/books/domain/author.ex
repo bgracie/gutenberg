@@ -1,4 +1,4 @@
-defmodule Gutenberg.Books.Schemas.Author do
+defmodule Gutenberg.Books.Author do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -9,8 +9,8 @@ defmodule Gutenberg.Books.Schemas.Author do
     field :year_of_death, :integer
 
     many_to_many :books,
-      Gutenberg.Books.Schemas.Book,
-      join_through: Gutenberg.Books.Schemas.BookAuthor
+      Gutenberg.Books.Book,
+      join_through: Gutenberg.Books.BookAuthor
 
     timestamps(type: :utc_datetime)
   end

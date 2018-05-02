@@ -1,4 +1,4 @@
-defmodule Gutenberg.Books.Schemas.Language do
+defmodule Gutenberg.Books.Language do
   use Ecto.Schema
   import Ecto.Changeset
 

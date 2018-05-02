@@ -23,7 +23,7 @@ defmodule Gutenberg.Books.Seed do
   defp write_books(imported_books) do
     imported_books
     |> Enum.map(&(Map.merge(%{title: &1["title"]}, Repo.now_timestamps())))
-    |> (&(Repo.chunked_insert_all(Books.Schemas.Book, &1))).()
+    |> (&(Repo.chunked_insert_all(Books.Book, &1))).()
   end
 
   defp stored_books() do
@@ -38,7 +38,7 @@ defmodule Gutenberg.Books.Seed do
     |> List.flatten()
     |> Enum.uniq()
     |> Enum.map(&(Map.merge(%{mime_type: &1}, Repo.now_timestamps())))
-    |> (&(Repo.chunked_insert_all(Books.Schemas.Format, &1))).()
+    |> (&(Repo.chunked_insert_all(Books.Format, &1))).()
 
     stored_formats = Books.Formats.list()
       |> Map.new(fn (format) -> { format.mime_type, format.id } end)
@@ -53,7 +53,7 @@ defmodule Gutenberg.Books.Seed do
               url: url
             }, Repo.now_timestamps())
           end) |> Enum.concat(acc)
-      end) |> (&(Repo.chunked_insert_all(Books.Schemas.BookFormat, &1))).()
+      end) |> (&(Repo.chunked_insert_all(Books.BookFormat, &1))).()
   end
 
   defp write_subjects(imported_books, stored_books) do
@@ -62,7 +62,7 @@ defmodule Gutenberg.Books.Seed do
     |> List.flatten()
     |> Enum.uniq()
     |> Enum.map(&(Map.merge(%{name: &1}, Repo.now_timestamps())))
-    |> (&(Repo.chunked_insert_all(Books.Schemas.Subject, &1))).()
+    |> (&(Repo.chunked_insert_all(Books.Subject, &1))).()
 
     stored_subjects = Books.Subjects.list()
       |> Map.new(fn (subject) -> { subject.name, subject.id } end)
@@ -76,7 +76,7 @@ defmodule Gutenberg.Books.Seed do
               subject_id: stored_subjects[&1]
             }, Repo.now_timestamps())
           )) |> Enum.concat(acc)
-      end) |> (&(Repo.chunked_insert_all(Books.Schemas.BookSubject, &1))).()
+      end) |> (&(Repo.chunked_insert_all(Books.BookSubject, &1))).()
   end
 
   defp write_languages(imported_books, stored_books) do
@@ -86,7 +86,7 @@ defmodule Gutenberg.Books.Seed do
     |> List.flatten()
     |> Enum.uniq()
     |> Enum.map(&(Map.merge(%{code: &1}, Repo.now_timestamps())))
-    |> (&(Repo.chunked_insert_all(Books.Schemas.Language, &1))).()
+    |> (&(Repo.chunked_insert_all(Books.Language, &1))).()
 
     stored_languages = Books.Languages.list()
       |> Map.new(fn (language) -> { language.code, language.id } end)
@@ -100,7 +100,7 @@ defmodule Gutenberg.Books.Seed do
               language_id: stored_languages[&1]
             }, Repo.now_timestamps())
           )) |> Enum.concat(acc)
-      end) |> (&(Repo.chunked_insert_all(Books.Schemas.BookLanguage, &1))).()
+      end) |> (&(Repo.chunked_insert_all(Books.BookLanguage, &1))).()
   end
 
   defp write_authors(imported_books, stored_books) do
@@ -109,7 +109,7 @@ defmodule Gutenberg.Books.Seed do
     |> Enum.filter(&(!is_nil(&1)))
     |> Enum.uniq()
     |> Enum.map(&(Map.merge(%{name: &1}, Repo.now_timestamps())))
-    |> (&(Repo.chunked_insert_all(Books.Schemas.Author, &1))).()
+    |> (&(Repo.chunked_insert_all(Books.Author, &1))).()
 
     stored_authors = Books.Authors.list()
       |> Map.new(fn (author) -> { author.name, author.id } end)
@@ -120,6 +120,6 @@ defmodule Gutenberg.Books.Seed do
           book_id: stored_books[book["title"]],
           author_id: stored_authors[book["author"]]
         }, Repo.now_timestamps())
-      end) |> (&(Repo.chunked_insert_all(Books.Schemas.BookAuthor, &1))).()
+      end) |> (&(Repo.chunked_insert_all(Books.BookAuthor, &1))).()
   end
 end

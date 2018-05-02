@@ -6,7 +6,7 @@ defmodule Gutenberg.Books do
   import Ecto.Query, warn: false
   alias Gutenberg.Repo
 
-  alias Gutenberg.Books.Schemas.Book
+  alias Gutenberg.Books.Book
 
   @doc """
   Returns the list of books.

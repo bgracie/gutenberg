@@ -6,7 +6,7 @@ defmodule Gutenberg.Books.Languages do
   import Ecto.Query, warn: false
   alias Gutenberg.Repo
 
-  alias Gutenberg.Books.Schemas.Language
+  alias Gutenberg.Books.Language
 
   @doc """
   Returns the list of languages.

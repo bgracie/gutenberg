@@ -6,7 +6,7 @@ defmodule Gutenberg.Books.Authors do
   import Ecto.Query, warn: false
   alias Gutenberg.Repo
 
-  alias Gutenberg.Books.Schemas.Author
+  alias Gutenberg.Books.Author
 
   @doc """
   Returns the list of authors.

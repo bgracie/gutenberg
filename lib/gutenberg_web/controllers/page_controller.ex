@@ -13,7 +13,7 @@ defmodule GutenbergWeb.PageController do
   def search(conn, params) do
     term = params["search"]["term"]
 
-    books = (from b in Gutenberg.Books.Schemas.Book,
+    books = (from b in Gutenberg.Books.Book,
       where: ilike(b.title, ^"%#{term}%"))
       |> Gutenberg.Repo.all()
       |> Enum.map(&(%{
@@ -22,7 +22,7 @@ defmodule GutenbergWeb.PageController do
         type: "book"
       }))
 
-    authors = (from a in Gutenberg.Books.Schemas.Author,
+    authors = (from a in Gutenberg.Books.Author,
       where: ilike(a.name, ^"%#{term}%"))
       |> Gutenberg.Repo.all()
       |> Enum.map(&(%{
@@ -31,7 +31,7 @@ defmodule GutenbergWeb.PageController do
         type: "author"
       }))
 
-    subjects = (from s in Gutenberg.Books.Schemas.Subject,
+    subjects = (from s in Gutenberg.Books.Subject,
       where: ilike(s.name, ^"%#{term}%"))
       |> Gutenberg.Repo.all()
       |> Enum.map(&(%{

@@ -6,7 +6,7 @@ defmodule Gutenberg.Books.Formats do
   import Ecto.Query, warn: false
   alias Gutenberg.Repo
 
-  alias Gutenberg.Books.Schemas.Format
+  alias Gutenberg.Books.Format
 
   @doc """
   Returns the list of formats.
