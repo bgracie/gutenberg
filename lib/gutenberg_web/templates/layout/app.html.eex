@@ -20,9 +20,8 @@
               Project Gutenberg
             </a>
             <%= render GutenbergWeb.LayoutView, "language_dropdown.html", conn: @conn %>
-            <%= form_for @conn, "/#{locale()}/search", [as: :search, class: "nav__search"], fn f -> %>
+            <%= form_for @conn, "/#{locale()}/search", [as: :search, class: "nav__search pure-form"], fn f -> %>
               <%= text_input f, :term, value: "" %>
-              <%= submit(gettext("Search"), class: "nav__search_submit") %>
             <% end %>
           </div>
         </nav>
