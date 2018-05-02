@@ -11,5 +11,18 @@ msgid ""
 msgstr ""
 
 #: lib/gutenberg_web/templates/layout/app.html.eex:25
+#: lib/gutenberg_web/templates/page/index.html.eex:7
 msgid "Search"
+msgstr ""
+
+#: lib/gutenberg_web/templates/layout/app.html.eex:49
+msgid "Donate"
+msgstr ""
+
+#: lib/gutenberg_web/templates/layout/app.html.eex:44
+msgid "Terms & Conditions"
+msgstr ""
+
+#: lib/gutenberg_web/templates/layout/app.html.eex:54
+msgid "Volunteer"
 msgstr ""

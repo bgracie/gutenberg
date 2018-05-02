@@ -7,6 +7,7 @@ defmodule GutenbergWeb.HomepageTest do
     session
     |> visit("/")
     |> assert_has(css(".front__banner", text: "Gutenberg"))
+    |> assert_has(css(".footer__link", text: "Volunteer"))
   end
 
   test "can change locale", %{session: session} do

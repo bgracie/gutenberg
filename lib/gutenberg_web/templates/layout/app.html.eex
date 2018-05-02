@@ -32,9 +32,31 @@
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-      <main role="main" style="height: calc(100% - 32px), position: relative;">
+      <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
+
+      <footer>
+        <div class="pure-menu pure-menu-horizontal">
+          <ul class="pure-menu-list">
+            <li class="pure-menu-item">
+              <a href="#" class="pure-menu-link footer__link">
+                <%= gettext("Terms & Conditions") %>
+              </a>
+            </li>
+            <li class="pure-menu-item">
+              <a href="#" class="pure-menu-link footer__link">
+                <%= gettext("Donate") %>
+              </a>
+            </li>
+            <li class="pure-menu-item">
+              <a href="#" class="pure-menu-link footer__link">
+                <%= gettext("Volunteer") %>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>

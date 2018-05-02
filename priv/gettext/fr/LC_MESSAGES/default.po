@@ -11,5 +11,18 @@ msgstr ""
 "Language: fr\n"
 
 #: lib/gutenberg_web/templates/layout/app.html.eex:25
+#: lib/gutenberg_web/templates/page/index.html.eex:7
 msgid "Search"
 msgstr "Chercher"
+
+#: lib/gutenberg_web/templates/layout/app.html.eex:49
+msgid "Donate"
+msgstr "Faire un don"
+
+#: lib/gutenberg_web/templates/layout/app.html.eex:44
+msgid "Terms & Conditions"
+msgstr "Termes et conditions"
+
+#: lib/gutenberg_web/templates/layout/app.html.eex:54
+msgid "Volunteer"
+msgstr "Devenir Bénévole"
