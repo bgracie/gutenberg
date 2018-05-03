@@ -7,7 +7,16 @@
     <%= submit "Search", class: "btn btn-default" %>
   <% end %>
 
-
+  <ul class="nav nav-tabs" style="margin-bottom: 20px">
+    <%= for collection <- ["books", "authors", "subjects"] do %>
+      <li class="nav-item">
+        <a class="<%=search_tab_classes(collection, @collection)%>"
+          href="<%=search_tab_link(collection, @collection, @search_params, @conn)%>">
+          <%= collection |> String.capitalize %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
   <div>
     <%= for result <- @page.entries do %>
       <div class="card" style="margin-bottom: 10px">
