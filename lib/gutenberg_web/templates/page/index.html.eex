@@ -4,7 +4,7 @@
     <%= text_input f, :term, class: "form-control _front__search_term" %>
     <%= select(f,
       :collection,
-      [{"Books", "books"}, {"Authors", "authors"}],
+      [{"Books", "books"}, {"Authors", "authors"}, {"Subjects", "subjects"}],
       class: "form-control _front__search_col") %>
     <br>
     <%= submit(gettext("Search"), class: "_front__search_button btn btn-default") %>

@@ -47,14 +47,9 @@ defmodule GutenbergWeb.PageController do
     |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
 
-  def subjects(term, conn) when is_binary(term) do
-    (from s in Gutenberg.Books.Subject,
-      where: ilike(s.name, ^"%#{term}%"))
-      |> Gutenberg.Repo.all()
-      |> Enum.map(&(%{
-        label: &1.name,
-        link: subject_path(conn, :show, &1, locale()),
-        type: "subject"
-      }))
+  def subjects(term, conn, page) when is_binary(term) do
+    Gutenberg.Books.Subject
+    |> Gutenberg.Books.Subject.search(term)
+    |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
 end

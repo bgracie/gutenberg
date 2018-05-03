@@ -37,6 +37,12 @@
                 result.name,
                 to: author_path(@conn, :show, result.id, locale()))%>
             </h4>
+          <% "subjects" -> %>
+            <h4 class="card-title">
+              <%= link(
+                result.name,
+                to: subject_path(@conn, :show, result.id, locale()))%>
+            </h4>
           <% end %>
         </div>
       </div>
