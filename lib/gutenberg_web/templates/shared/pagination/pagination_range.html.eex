@@ -1,0 +1,8 @@
+<%= for this_page <- @page_range do %>
+  <li class='<%=page_classes(@page, this_page)%>'>
+    <%= link(this_page,
+      to: page_link(@page, this_page, @linkfn, @conn),
+      class: "page-link"
+    )%>
+  </li>
+<% end %>

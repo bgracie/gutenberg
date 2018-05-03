@@ -9,7 +9,7 @@
 
 
   <div>
-    <%= for result <- @results do %>
+    <%= for result <- @page.entries do %>
       <div class="card" style="margin-bottom: 10px">
         <div class="card-body">
           <%= case @collection do %>
@@ -28,4 +28,17 @@
     <% end %>
   </div>
 
+  <%= render(
+    GutenbergWeb.Shared.PaginationView,
+    "pagination.html",
+    conn: @conn,
+    page: @page,
+    linkfn: fn (conn, page) ->
+      page_path(
+        conn,
+        :search,
+        locale(),
+        %{"search" => Map.put(@search_params, "page", page)}
+      )
+  end)%>
 </div>

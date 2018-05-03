@@ -3,7 +3,7 @@ defmodule GutenbergWeb.PageController do
 
   import Ecto.Query, warn: false
 
-  @results_per_page 10
+  @results_per_page 8
 
   def index(conn, _params) do
     render(
@@ -18,7 +18,7 @@ defmodule GutenbergWeb.PageController do
       term = search_params["term"],
       page = (search_params["page"] || 1) |> Gutenberg.Utils.ensure_int()
     do
-      results = apply(
+      page = apply(
         GutenbergWeb.PageController,
         String.to_atom(collection),
         [term, conn, page]
@@ -27,8 +27,9 @@ defmodule GutenbergWeb.PageController do
       render(
         conn,
         "search.html",
-        results: results,
-        collection: collection
+        page: page,
+        collection: collection,
+        search_params: search_params
       )
     end
   end
@@ -37,7 +38,7 @@ defmodule GutenbergWeb.PageController do
     Gutenberg.Books.Book
     |> Gutenberg.Books.Book.search(term)
     |> Ecto.Query.preload(:authors)
-    |> Gutenberg.Repo.all()
+    |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
 
   def authors(term, conn) when is_binary(term) do
