@@ -23,26 +23,35 @@
         <div class="card-body">
           <%= case @collection do %>
           <% "books" -> %>
-            <h4 class="card-title">
-              <%= link(
-                result.title,
-                to: book_path(@conn, :show, result.id, locale()))%>
-            </h4>
+            <span class="card-title">
+              <%= link(to: book_path(@conn, :show, result.id, locale())) do %>
+                <%= render(
+                  GutenbergWeb.PageView,
+                  "result_label.html",
+                  fragments: fragments(@search_params["term"], result.title))%>
+              <% end %>
+            </span>
             <h6 class="card-subtitle">
               <%= Gutenberg.Books.Book.author_name(result) %>
             </h6>
           <% "authors" -> %>
-            <h4 class="card-title">
-              <%= link(
-                result.name,
-                to: author_path(@conn, :show, result.id, locale()))%>
-            </h4>
+            <span class="card-title">
+              <%= link(to: author_path(@conn, :show, result.id, locale())) do %>
+                <%= render(
+                  GutenbergWeb.PageView,
+                  "result_label.html",
+                  fragments: fragments(@search_params["term"], result.name)) %>
+              <% end %>
+            </span>
           <% "subjects" -> %>
-            <h4 class="card-title">
-              <%= link(
-                result.name,
-                to: subject_path(@conn, :show, result.id, locale()))%>
-            </h4>
+            <span class="card-title">
+              <%= link(to: subject_path(@conn, :show, result.id, locale())) do %>
+                <%= render(
+                  GutenbergWeb.PageView,
+                  "result_label.html",
+                  fragments: fragments(@search_params["term"], result.name)) %>
+              <% end %>
+            </span>
           <% end %>
         </div>
       </div>

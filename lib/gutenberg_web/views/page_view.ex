@@ -22,5 +22,16 @@ defmodule GutenbergWeb.PageView do
     )
   end
 
+  def fragments(search_term, result_label) do
+    Regex.split(~r/#{search_term}/i, result_label, include_captures: true)
+    |> Enum.map(&(decorate_fragment_label(&1, search_term)))
+  end
 
+  def decorate_fragment_label(fragment, search_term) do
+    if String.downcase(fragment) == String.downcase(search_term) do
+      {fragment, :match}
+    else
+      {fragment, :nomatch}
+    end
+  end
 end

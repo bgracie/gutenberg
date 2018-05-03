@@ -1,0 +1,1 @@
+<%= for fragment <- @fragments do %><%= case fragment do %><% { label, :nomatch } -> %><span><%= label %></span><% { label, :match } -> %><b><%= label %></b><% end %><% end %>
