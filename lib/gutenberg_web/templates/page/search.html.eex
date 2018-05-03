@@ -1,13 +1,31 @@
 <div class="main__container">
-  <%= form_for @conn, "/search", [as: :search], fn f -> %>
-    <%= text_input f, :term %>
-    <%= submit "Search" %>
+  <h1>Search Results...</h1>
+  <%= form_for @conn, "/#{locale()}/search",
+    [as: :search, class: "form-inline", style: "margin-bottom: 10px"],
+    fn f -> %>
+    <%= text_input f, :term, class: "form-control", style: "margin-right: 10px" %>
+    <%= submit "Search", class: "btn btn-default" %>
   <% end %>
 
-  <ul>
+
+  <div>
     <%= for result <- @results do %>
-      <li><%= link "#{result.label} [#{result.type}]", to: result.link %></li>
+      <div class="card" style="margin-bottom: 10px">
+        <div class="card-body">
+          <%= case @collection do %>
+          <%= "books" -> %>
+            <h4 class="card-title">
+              <%= link(
+                result.title,
+                to: book_path(@conn, :show, result.id, locale()))%>
+            </h4>
+            <h6 class="card-subtitle">
+              <%= Gutenberg.Books.Book.author_name(result) %>
+            </h6>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 
 </div>

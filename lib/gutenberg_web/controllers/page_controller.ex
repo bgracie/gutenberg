@@ -3,6 +3,8 @@ defmodule GutenbergWeb.PageController do
 
   import Ecto.Query, warn: false
 
+  @results_per_page 10
+
   def index(conn, _params) do
     render(
       conn,
@@ -10,45 +12,53 @@ defmodule GutenbergWeb.PageController do
     )
   end
 
-  def search(conn, params) do
-    term = params["search"]["term"]
+  def search(conn, %{"search" => search_params })do
+    with collection when collection in ["books", "authors", "subjects"]
+      <- (search_params["collection"] || "books"),
+      term = search_params["term"],
+      page = (search_params["page"] || 1) |> Gutenberg.Utils.ensure_int()
+    do
+      results = apply(
+        GutenbergWeb.PageController,
+        String.to_atom(collection),
+        [term, conn, page]
+      )
 
-    books = (from b in Gutenberg.Books.Book,
-      where: ilike(b.title, ^"%#{term}%"))
-      |> Gutenberg.Repo.all()
-      |> Enum.map(&(%{
-        label: &1.title,
-        link: book_path(conn, :show, &1),
-        type: "book"
-      }))
+      render(
+        conn,
+        "search.html",
+        results: results,
+        collection: collection
+      )
+    end
+  end
 
-    authors = (from a in Gutenberg.Books.Author,
+  def books(term, conn, page) when is_binary(term) do
+    Gutenberg.Books.Book
+    |> Gutenberg.Books.Book.search(term)
+    |> Ecto.Query.preload(:authors)
+    |> Gutenberg.Repo.all()
+  end
+
+  def authors(term, conn) when is_binary(term) do
+    (from a in Gutenberg.Books.Author,
       where: ilike(a.name, ^"%#{term}%"))
       |> Gutenberg.Repo.all()
       |> Enum.map(&(%{
         label: &1.name,
-        link: author_path(conn, :show, &1),
+        link: author_path(conn, :show, &1, locale()),
         type: "author"
       }))
+  end
 
-    subjects = (from s in Gutenberg.Books.Subject,
+  def subjects(term, conn) when is_binary(term) do
+    (from s in Gutenberg.Books.Subject,
       where: ilike(s.name, ^"%#{term}%"))
       |> Gutenberg.Repo.all()
       |> Enum.map(&(%{
         label: &1.name,
-        link: subject_path(conn, :show, &1),
+        link: subject_path(conn, :show, &1, locale()),
         type: "subject"
       }))
-
-    results = books
-      |> Enum.concat(authors)
-      |> Enum.concat(subjects)
-      |> Enum.sort_by(&(&1.label))
-
-    render(
-      conn,
-      "search.html",
-      results: results
-    )
   end
 end

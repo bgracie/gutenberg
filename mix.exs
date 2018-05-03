@@ -44,7 +44,8 @@ defmodule Gutenberg.Mixfile do
       {:poison, "~> 3.1"},
       {:domain_planner, path: "~/Code/domain_planner"},
       {:wallaby, "~> 0.19.2", [runtime: false, only: :test]},
-      {:set_locale, "~> 0.2.4"}
+      {:set_locale, "~> 0.2.4"},
+      {:scrivener_ecto, "~> 1.0"}
     ]
   end
 
