@@ -36,7 +36,7 @@ defmodule GutenbergWeb.Shared.PaginationView do
   end
 
   def middle_range_start(current_page) do
-    if (current_page - @middle_range_spread) <= @tail_ranges_length do
+    if (current_page - @middle_range_spread) <= (@tail_ranges_length + 1) do
       1
     else
       current_page - @middle_range_spread
@@ -55,7 +55,7 @@ defmodule GutenbergWeb.Shared.PaginationView do
     if middle_range_end(current_page, total_pages) == total_pages do
       []
     else
-      ((total_pages - @tail_ranges_length)..total_pages) |> Enum.to_list
+      ((total_pages - @tail_ranges_length + 1)..total_pages) |> Enum.to_list
     end
   end
 end
