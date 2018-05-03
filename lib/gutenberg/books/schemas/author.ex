@@ -1,6 +1,7 @@
 defmodule Gutenberg.Books.Author do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query
 
 
   schema "authors" do
@@ -21,5 +22,9 @@ defmodule Gutenberg.Books.Author do
     |> cast(attrs, [:name, :year_of_birth, :year_of_death])
     |> validate_required([:name, :year_of_birth, :year_of_death])
     |> unique_constraint(:name)
+  end
+
+  def search(query, term) when is_binary(term) do
+    where(query, [b], ilike(b.name, ^"%#{term}%"))
   end
 end

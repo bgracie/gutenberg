@@ -22,7 +22,7 @@
       <div class="card" style="margin-bottom: 10px">
         <div class="card-body">
           <%= case @collection do %>
-          <%= "books" -> %>
+          <% "books" -> %>
             <h4 class="card-title">
               <%= link(
                 result.title,
@@ -31,6 +31,12 @@
             <h6 class="card-subtitle">
               <%= Gutenberg.Books.Book.author_name(result) %>
             </h6>
+          <% "authors" -> %>
+            <h4 class="card-title">
+              <%= link(
+                result.name,
+                to: author_path(@conn, :show, result.id, locale()))%>
+            </h4>
           <% end %>
         </div>
       </div>

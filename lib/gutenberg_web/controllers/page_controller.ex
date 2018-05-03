@@ -41,15 +41,10 @@ defmodule GutenbergWeb.PageController do
     |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
 
-  def authors(term, conn) when is_binary(term) do
-    (from a in Gutenberg.Books.Author,
-      where: ilike(a.name, ^"%#{term}%"))
-      |> Gutenberg.Repo.all()
-      |> Enum.map(&(%{
-        label: &1.name,
-        link: author_path(conn, :show, &1, locale()),
-        type: "author"
-      }))
+  def authors(term, conn, page) when is_binary(term) do
+    Gutenberg.Books.Author
+    |> Gutenberg.Books.Author.search(term)
+    |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
 
   def subjects(term, conn) when is_binary(term) do

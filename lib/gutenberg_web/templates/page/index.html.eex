@@ -2,7 +2,10 @@
   <h2 class="_front__banner">Project Gutenberg</h2>
   <%= form_for @conn, "/#{locale()}/search", [as: :search, class: "_front__search_form pure-form"], fn (f) -> %>
     <%= text_input f, :term, class: "form-control _front__search_term" %>
-    <%= select(f, :collection, [{"Books", "books"}], class: "form-control _front__search_col") %>
+    <%= select(f,
+      :collection,
+      [{"Books", "books"}, {"Authors", "authors"}],
+      class: "form-control _front__search_col") %>
     <br>
     <%= submit(gettext("Search"), class: "_front__search_button btn btn-default") %>
   <% end %>
