@@ -6,28 +6,45 @@
   <h4>by <%= link Enum.at(@book.authors, 0).name,
     to: author_path(@conn, :show, locale(), Enum.at(@book.authors, 0)) %></h4>
 
-  <h4>Subjects:</h4>
   <ul>
-    <%= for subject <- @book.subjects do %>
-      <li><%= link subject.name, to: subject_path(@conn, :show, locale(), subject) %></li>
-    <% end %>
-  </ul>
+    <li>Written in <%=language_labels(@book)%></li>
+    <li>
+      <span>Related to:</span>
+      <ul>
+        <%= for s <- @book.subjects do %>
+          <li>
+            <%=link "\"#{s.name}\"", to: subject_path(@conn, :show, locale(), s)%>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  </u>
 
-  <h4>Languages:</h4>
-  <ul>
-    <%= for language <- @book.languages do %>
-      <li><%= language.code %></li>
-    <% end %>
-  </ul>
 
-  <h4>Formats:</h4>
-  <ul>
-    <%= for book_format <- @book.book_formats do %>
-      <li>
-        <%= book_format.format.mime_type %>
-        (<%= link "View", to: book_format.url %>)
-      </li>
-    <% end %>
-  </ul>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Read this book:</h4>
+      <ul>
+        <%= if online_format(@book) do %>
+          <li><%= link "Online", to: online_format(@book).url %></li>
+        <% end %>
+        <%= if kindle_format(@book) do %>
+          <li><%= link "On a Kindle", to: kindle_format(@book).url %></li>
+        <% end %>
+        <%= if ereader_format(@book) do %>
+          <li><%= link "On an E-Reader", to: ereader_format(@book).url %></li>
+        <% end %>
+        <li>
+          <span>See all formats:</span>
+          <ul>
+            <%= for { format, label } <- formats_with_labels(@book) do %>
+              <li><%= link label, to: format.url %></li>
+            <% end %>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
 
 </div>

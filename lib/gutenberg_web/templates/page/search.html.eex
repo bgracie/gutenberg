@@ -25,7 +25,7 @@
           <%= case @collection do %>
           <% "books" -> %>
             <span class="card-title">
-              <%= link(to: book_path(@conn, :show, result.id, locale())) do %>
+              <%= link(to: book_path(@conn, :show, locale(), result.id)) do %>
                 <%= render(
                   GutenbergWeb.PageView,
                   "result_label.html",
