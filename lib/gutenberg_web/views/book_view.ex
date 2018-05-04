@@ -1,13 +1,6 @@
 defmodule GutenbergWeb.BookView do
   use GutenbergWeb, :view
 
-  @language_codes %{
-    "en" => "English",
-    "de" => "German",
-    "es" => "Spanish",
-    "fr" => "French"
-  }
-
   def author(book) do
     Enum.at(book.authors, 0)
   end
