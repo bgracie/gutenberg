@@ -55,7 +55,8 @@ exports.config = {
       options: {
         includePaths: [
           "node_modules/bootstrap/scss",
-          "node_modules/font-awesome/scss"
+          "node_modules/font-awesome/scss",
+          "css"
         ], // Tell sass-brunch where to look for files to @import
         precision: 8 // Minimum precision required by bootstrap-sass
       }
