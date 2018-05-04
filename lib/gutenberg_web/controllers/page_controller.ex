@@ -37,6 +37,7 @@ defmodule GutenbergWeb.PageController do
   def books(term, conn, page) when is_binary(term) do
     Gutenberg.Books.Book
     |> Gutenberg.Books.Book.search(term)
+    |> Gutenberg.Books.Book.order_by_title_length()
     |> Ecto.Query.preload(:authors)
     |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
@@ -44,12 +45,14 @@ defmodule GutenbergWeb.PageController do
   def authors(term, conn, page) when is_binary(term) do
     Gutenberg.Books.Author
     |> Gutenberg.Books.Author.search(term)
+    |> Gutenberg.Books.Author.order_by_name_length()
     |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
 
   def subjects(term, conn, page) when is_binary(term) do
     Gutenberg.Books.Subject
     |> Gutenberg.Books.Subject.search(term)
+    |> Gutenberg.Books.Subject.order_by_name_length()
     |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
 end

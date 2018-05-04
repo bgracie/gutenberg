@@ -107,6 +107,7 @@ defmodule Gutenberg.Books.Seed do
     imported_books
     |> Enum.map(&Map.get(&1, "author"))
     |> Enum.filter(&(!is_nil(&1)))
+    |> Enum.map(&reverse_author_name/1)
     |> Enum.uniq()
     |> Enum.map(&(Map.merge(%{name: &1}, Repo.now_timestamps())))
     |> (&(Repo.chunked_insert_all(Books.Author, &1))).()
@@ -118,8 +119,15 @@ defmodule Gutenberg.Books.Seed do
       |> Enum.map(fn (book) ->
         Map.merge(%{
           book_id: stored_books[book["title"]],
-          author_id: stored_authors[book["author"]]
+          author_id: stored_authors[reverse_author_name(book["author"])]
         }, Repo.now_timestamps())
       end) |> (&(Repo.chunked_insert_all(Books.BookAuthor, &1))).()
+  end
+
+  defp reverse_author_name(name) do
+    name
+    |> String.split(", ")
+    |> Enum.reverse()
+    |> Enum.join(" ")
   end
 end

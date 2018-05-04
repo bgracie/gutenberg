@@ -4,6 +4,7 @@
     [as: :search, class: "form-inline", style: "margin-bottom: 10px"],
     fn f -> %>
     <%= text_input f, :term, class: "form-control", style: "margin-right: 10px" %>
+    <%= hidden_input f, :collection, value: @collection %>
     <%= submit "Search", class: "btn btn-default" %>
   <% end %>
 

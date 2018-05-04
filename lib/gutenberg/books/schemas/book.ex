@@ -35,6 +35,10 @@ defmodule Gutenberg.Books.Book do
     where(query, [b], ilike(b.title, ^"%#{term}%"))
   end
 
+  def order_by_title_length(query) do
+    order_by(query, [b], fragment("char_length(?)", b.title))
+  end
+
   @doc false
   def changeset(book, attrs) do
     book

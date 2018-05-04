@@ -27,4 +27,8 @@ defmodule Gutenberg.Books.Author do
   def search(query, term) when is_binary(term) do
     where(query, [b], ilike(b.name, ^"%#{term}%"))
   end
+
+  def order_by_name_length(query) do
+    order_by(query, [a], fragment("char_length(?)", a.name))
+  end
 end
