@@ -16,7 +16,6 @@
       <header class="_header">
         <nav role="navigation" id="_navbar" class="navbar">
           <a class="navbar-brand" href="/">
-            <span class="fa fa-book"></span>
             <span>Project Gutenberg</span>
           </a>
           <%= render GutenbergWeb.LayoutView, "language_dropdown.html", conn: @conn %>
@@ -47,7 +46,7 @@
         <%= render @view_module, @view_template, assigns %>
       </main>
 
-      <div class="nav">
+      <div id="_bottom_nav" class="nav">
         <a href="#" class="nav-link _footer__link">
           <%= gettext("Terms & Conditions") %>
         </a>

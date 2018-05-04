@@ -1,12 +1,22 @@
 <div class="front__search_container">
-  <h2 class="_front__banner">Project Gutenberg</h2>
-  <%= form_for @conn, "/#{locale()}/search", [as: :search, class: "_front__search_form pure-form"], fn (f) -> %>
-    <%= text_input f, :term, class: "form-control _front__search_term" %>
+  <h2 id="_front__banner">
+    Project Gutenberg
+  </h2>
+  <%= form_for(@conn,
+    "/#{locale()}/search",
+    [as: :search,
+    id: "_front__search_form",
+    class:  "form-inline"], fn (f) -> %>
+    <%= text_input(f,
+      :term,
+      id: "_front__search_term",
+      class: "form-control",
+      placeholder: raw("&#xF002;   Search"))%>
     <%= select(f,
       :collection,
       [{"Books", "books"}, {"Authors", "authors"}, {"Subjects", "subjects"}],
-      class: "form-control _front__search_col") %>
+      class: "form-control",
+      id: "_front__search_col") %>
     <br>
-    <%= submit(gettext("Search"), class: "_front__search_button btn btn-default") %>
-  <% end %>
+  <% end)%>
 </div>

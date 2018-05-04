@@ -18,6 +18,7 @@
 @import "node_modules/bootstrap/scss/card";
 @import "node_modules/bootstrap/scss/pagination";
 @import "node_modules/bootstrap/scss/transitions";
+@import "node_modules/bootstrap/scss/type";
 
 
 #_navbar__search_term {
@@ -25,9 +26,51 @@
   font-style: normal;
 }
 
+#_bottom_nav {
+  background-color: $light;
+}
+
 @media only screen and (max-width: 700px) {
   ._nav__search {
     display: none;
+  }
+  #_front__search_term {
+    max-width: 100%;
+    width: 100%;
+  }
+  #_front__search_form {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  #_front__search_term {
+    width: 700px;
+  }
+}
+
+@media only screen and (min-width: 820px) {
+  #_front__search_form {
+    width: 820px;
+  }
+}
+
+@media only screen and (min-height: 600px) {
+  #_bottom_nav {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+  }
+
+  #_front__banner {
+    margin-top: 200px;
+  }
+}
+
+@media only screen and (max-height: 600px) {
+
+  #_front__banner {
+    margin-top: 30px;
   }
 }
 
@@ -42,26 +85,28 @@
 ._nav__search {
   margin-left: auto;
 }
-.front__banner {
-  margin-left: auto;
+#_front__banner {
   text-align: center;
   font-size: 50px;
-  margin-bottom: 20px;
-  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
 }
 
-._front__search_term {
+#_front__search_term {
+  font-family: FontAwesome, Arial;
+  font-style: normal;
   margin-bottom: 20px;
-  max-width: 300px;
 }
 
-._front__search_col {
+#_front__search_col {
+  width: 115px;
   margin-bottom: 20px;
-  max-width: 100px;
+  display: inline-block;
 }
 
-._front__search_form {
+#_front__search_form {
+  display: block;
   margin: 0 auto;
-  max-width: 500px;
   text-align: center;
 }
