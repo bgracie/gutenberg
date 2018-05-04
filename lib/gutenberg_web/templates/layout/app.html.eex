@@ -14,17 +14,26 @@
   <body>
     <div>
       <header class="_header">
-        <nav role="navigation">
-          <div class="nav">
-            <a class="nav-link" href="/">
-              Project Gutenberg
-            </a>
-            <%= render GutenbergWeb.LayoutView, "language_dropdown.html", conn: @conn %>
-              <%= form_for @conn, "/#{locale()}/search", [as: :search, class: "_nav__search"], fn f -> %>
-                <%= text_input f, :term, value: "", class: "form-control" %>
-              <% end %>
+        <nav role="navigation" class="navbar">
+          <a class="navbar-brand" href="/">
+            <span class="fa fa-book"></span>
+            <span>Project Gutenberg</span>
+          </a>
+          <%= render GutenbergWeb.LayoutView, "language_dropdown.html", conn: @conn %>
+          <%= form_for @conn,
+            "/#{locale()}/search",
+            [as: :search,
+            class: "_nav__search form-inline"], fn f -> %>
+            <div class="input-group">
+              <%= text_input(
+                f,
+                :term,
+                value: "",
+                class: "form-control",
+                id: "_navbar__search_term",
+                placeholder: raw("&#xF002;   Search"))%>
             </div>
-          </div>
+          <% end %>
         </nav>
       </header>
       <%= if get_flash(@conn, :info) do %>

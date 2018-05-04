@@ -2,6 +2,8 @@
 
 @import "bootstrap_overrides";
 
+@import 'font-awesome';
+
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
@@ -9,6 +11,7 @@
 // Optional
 @import "node_modules/bootstrap/scss/reboot";
 @import "node_modules/bootstrap/scss/nav";
+@import "node_modules/bootstrap/scss/navbar";
 @import "node_modules/bootstrap/scss/forms";
 @import "node_modules/bootstrap/scss/buttons";
 @import "node_modules/bootstrap/scss/dropdown";
@@ -16,6 +19,11 @@
 @import "node_modules/bootstrap/scss/pagination";
 @import "node_modules/bootstrap/scss/transitions";
 
+
+#_navbar__search_term {
+  font-family: FontAwesome, Arial;
+  font-style: normal;
+}
 
 .main__container {
   padding: 30px;
