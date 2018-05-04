@@ -1,25 +1,16 @@
 <div class="main__container">
-  <h2><%= @subject.name %></h2>
+  <h2><%= "Books related to \'#{@subject.name}\'" %></h2>
 
-  <h4>Related Books:</h4>
-  <table class="pure-table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= for book <- @subject.books do %>
-          <tr>
-            <td><%= link book.title, to: book_path(@conn, :show, locale(), book) %></td>
-            <td>
-              <%= link author(book).name,
-                to: author_path(@conn, :show, locale(), author(book))
-              %>
-            </td>
-          </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= for book <- @subject.books do %>
+    <div class="card" style="margin-bottom: 10px">
+      <div class="card-body">
+        <span class="card-title">
+          <%= link(book.title, to: book_path(@conn, :show, locale(), book)) %>
+        </span>
+        <h6 class="card-subtitle">
+          <%= Gutenberg.Books.Book.author_name(book) %>
+        </h6>
+      </div>
+    </div>
+  <% end %>
 </div>

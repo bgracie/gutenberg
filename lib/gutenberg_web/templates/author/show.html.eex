@@ -1,7 +1,6 @@
 <div class="main__container">
 
-  <h2><%= @author.name %></h2>
-  <h4>Wrote:</h4>
+  <h1><%= "Books by #{@author.name}" %></h2>
   <ul>
     <%= for book <- @author.books do %>
       <li><%= link book.title, to: book_path(@conn, :show, locale(), book) %></li>

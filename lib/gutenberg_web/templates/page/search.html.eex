@@ -37,7 +37,7 @@
             </h6>
           <% "authors" -> %>
             <span class="card-title">
-              <%= link(to: author_path(@conn, :show, result.id, locale())) do %>
+              <%= link(to: author_path(@conn, :show, locale(), result.id)) do %>
                 <%= render(
                   GutenbergWeb.PageView,
                   "result_label.html",
@@ -46,7 +46,7 @@
             </span>
           <% "subjects" -> %>
             <span class="card-title">
-              <%= link(to: subject_path(@conn, :show, result.id, locale())) do %>
+              <%= link(to: subject_path(@conn, :show, locale(), result.id)) do %>
                 <%= render(
                   GutenbergWeb.PageView,
                   "result_label.html",
