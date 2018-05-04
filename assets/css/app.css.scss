@@ -41,10 +41,21 @@
   #_front__search_form {
     width: 100%;
   }
+  #_search_results__term_input {
+    width: 100%;
+  }
+}
+
+#_search_results__term_input {
+  font-family: FontAwesome, Arial;
+  font-style: normal;
 }
 
 @media only screen and (min-width: 700px) {
   #_front__search_term {
+    width: 700px;
+  }
+  #_search_results__term_input {
     width: 700px;
   }
 }
@@ -55,24 +66,6 @@
   }
 }
 
-@media only screen and (min-height: 600px) {
-  #_bottom_nav {
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-  }
-
-  #_front__banner {
-    margin-top: 200px;
-  }
-}
-
-@media only screen and (max-height: 600px) {
-
-  #_front__banner {
-    margin-top: 30px;
-  }
-}
 
 #_navbar {
   background-color: $light;

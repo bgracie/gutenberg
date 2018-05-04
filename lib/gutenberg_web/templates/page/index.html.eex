@@ -20,3 +20,25 @@
     <br>
   <% end)%>
 </div>
+
+<style>
+  @media only screen and (min-height: 600px) {
+    #_bottom_nav {
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+    }
+
+    #_front__banner {
+      margin-top: 200px;
+    }
+  }
+
+  @media only screen and (max-height: 600px) {
+
+    #_front__banner {
+      margin-top: 30px;
+    }
+  }
+
+</style>

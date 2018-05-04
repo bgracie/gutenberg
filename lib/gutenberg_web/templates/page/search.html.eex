@@ -3,9 +3,14 @@
   <%= form_for @conn, "/#{locale()}/search",
     [as: :search, class: "form-inline", style: "margin-bottom: 10px"],
     fn f -> %>
-    <%= text_input f, :term, class: "form-control", style: "margin-right: 10px" %>
+    <%= text_input(
+      f,
+      :term,
+      class: "form-control",
+      id: "_search_results__term_input",
+      placeholder: raw("&#xF002;   Search"),
+      style: "margin-right: 10px")%>
     <%= hidden_input f, :collection, value: @collection %>
-    <%= submit "Search", class: "btn btn-default" %>
   <% end %>
 
   <ul class="nav nav-tabs" style="margin-bottom: 20px">
@@ -32,9 +37,9 @@
                   fragments: fragments(@search_params["term"], result.title))%>
               <% end %>
             </span>
-            <h6 class="card-subtitle">
-              <%= Gutenberg.Books.Book.author_name(result) %>
-            </h6>
+            <div class="card-subtitle">
+              <%= "by #{Gutenberg.Books.Book.author_name(result)}" %>
+            </div>
           <% "authors" -> %>
             <span class="card-title">
               <%= link(to: author_path(@conn, :show, locale(), result.id)) do %>
