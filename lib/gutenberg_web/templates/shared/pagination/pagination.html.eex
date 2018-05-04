@@ -1,51 +1,53 @@
-<ul class="pagination">
-  <li class='<%=prev_classes(@page)%>'>
-    <%= link(
-      "Prev",
-      to: page_link(@page, (@page.page_number - 1), @linkfn, @conn),
-      class: "page-link")%>
-  </li>
-  <%= render(
-    GutenbergWeb.Shared.PaginationView,
-    "pagination_range.html",
-    conn: @conn,
-    page: @page,
-    page_range: beginning_range(@page),
-    linkfn: @linkfn)%>
-  <%= if beginning_range(@page) !== [] do %>
-    <li class='page-item disabled'>
+<%= if @page.entries !== [] && @page.total_pages !== 1 do %>
+  <ul class="pagination">
+    <li class='<%=prev_classes(@page)%>'>
       <%= link(
-        "...",
-        to: "#",
+        "Prev",
+        to: page_link(@page, (@page.page_number - 1), @linkfn, @conn),
         class: "page-link")%>
     </li>
-  <% end %>
-  <%= render(
-    GutenbergWeb.Shared.PaginationView,
-    "pagination_range.html",
-    conn: @conn,
-    page: @page,
-    page_range: middle_range(@page),
-    linkfn: @linkfn)%>
-  <%= if end_range(@page) !== [] do %>
-    <li class='page-item disabled'>
+    <%= render(
+      GutenbergWeb.Shared.PaginationView,
+      "pagination_range.html",
+      conn: @conn,
+      page: @page,
+      page_range: beginning_range(@page),
+      linkfn: @linkfn)%>
+    <%= if beginning_range(@page) !== [] do %>
+      <li class='page-item disabled'>
+        <%= link(
+          "...",
+          to: "#",
+          class: "page-link")%>
+      </li>
+    <% end %>
+    <%= render(
+      GutenbergWeb.Shared.PaginationView,
+      "pagination_range.html",
+      conn: @conn,
+      page: @page,
+      page_range: middle_range(@page),
+      linkfn: @linkfn)%>
+    <%= if end_range(@page) !== [] do %>
+      <li class='page-item disabled'>
+        <%= link(
+          "...",
+          to: "#",
+          class: "page-link")%>
+      </li>
+    <% end %>
+    <%= render(
+      GutenbergWeb.Shared.PaginationView,
+      "pagination_range.html",
+      conn: @conn,
+      page: @page,
+      page_range: end_range(@page),
+      linkfn: @linkfn)%>
+    <li class='<%=next_classes(@page)%>'>
       <%= link(
-        "...",
-        to: "#",
+        "Next",
+        to: page_link(@page, (@page.page_number + 1), @linkfn, @conn),
         class: "page-link")%>
     </li>
-  <% end %>
-  <%= render(
-    GutenbergWeb.Shared.PaginationView,
-    "pagination_range.html",
-    conn: @conn,
-    page: @page,
-    page_range: end_range(@page),
-    linkfn: @linkfn)%>
-  <li class='<%=next_classes(@page)%>'>
-    <%= link(
-      "Next",
-      to: page_link(@page, (@page.page_number + 1), @linkfn, @conn),
-      class: "page-link")%>
-  </li>
-</ul>
+  </ul>
+<% end %>
