@@ -25,39 +25,39 @@
   </ul>
   <div>
     <%= for result <- @page.entries do %>
-      <div class="card" style="margin-bottom: 10px">
+      <div class="card" class="_result_card">
         <div class="card-body">
           <%= case @collection do %>
           <% "books" -> %>
-            <span class="card-title">
+            <div class="card-title">
               <%= link(to: book_path(@conn, :show, locale(), result.id)) do %>
                 <%= render(
                   GutenbergWeb.PageView,
                   "result_label.html",
                   fragments: fragments(@search_params["term"], result.title))%>
               <% end %>
-            </span>
+            </div>
             <div class="card-subtitle">
               <%= "by #{Gutenberg.Books.Book.author_name(result)}" %>
             </div>
           <% "authors" -> %>
-            <span class="card-title">
+            <div class="card-title">
               <%= link(to: author_path(@conn, :show, locale(), result.id)) do %>
                 <%= render(
                   GutenbergWeb.PageView,
                   "result_label.html",
                   fragments: fragments(@search_params["term"], result.name)) %>
               <% end %>
-            </span>
+            </div>
           <% "subjects" -> %>
-            <span class="card-title">
+            <div class="card-title">
               <%= link(to: subject_path(@conn, :show, locale(), result.id)) do %>
                 <%= render(
                   GutenbergWeb.PageView,
                   "result_label.html",
                   fragments: fragments(@search_params["term"], result.name)) %>
               <% end %>
-            </span>
+            </div>
           <% end %>
         </div>
       </div>

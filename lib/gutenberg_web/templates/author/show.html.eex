@@ -1,9 +1,14 @@
 <div class="main__container">
 
   <h1><%= "Books by #{@author.name}" %></h2>
-  <ul>
-    <%= for book <- @author.books do %>
-      <li><%= link book.title, to: book_path(@conn, :show, locale(), book) %></li>
-    <% end %>
-  </ul>
+
+  <%= for book <- @author.books do %>
+    <div class="card" class="_result_card">
+      <div class="card-body">
+        <div class="card-title">
+          <%= link(book.title, to: book_path(@conn, :show, locale(), book)) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

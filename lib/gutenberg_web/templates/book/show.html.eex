@@ -6,19 +6,14 @@
   <h4>by <%= link Enum.at(@book.authors, 0).name,
     to: author_path(@conn, :show, locale(), Enum.at(@book.authors, 0)) %></h4>
 
-  <ul>
-    <li>Written in <%=language_labels(@book)%></li>
-    <li>
-      <span>Related to:</span>
-      <ul>
-        <%= for s <- @book.subjects do %>
-          <li>
-            <%=link "\"#{s.name}\"", to: subject_path(@conn, :show, locale(), s)%>
-          </li>
-        <% end %>
-      </ul>
-    </li>
-  </ul>
+  <p style="margin-bottom: 0px">Written in <%=language_labels(@book)%></p>
+  <div style="margin-bottom: 10px">
+    <%= for s <- @book.subjects do %>
+      <%=link("#{s.name}",
+          to: subject_path(@conn, :show, locale(), s),
+          class: "badge badge-light")%>
+    <% end %>
+  </div>
   <div class="accordion">
     <%= if online_format(@book) do %>
       <div class="card">
@@ -29,9 +24,7 @@
         </div>
         <div class="collapse" id="_online_instructions">
           <div class="card-body">
-            <span>The text is available </span>
-            <%= link "here", to: online_format(@book).url, target: "_blank" %>
-            <span>.</span>
+            <span>The text is available </span><%= link "here", to: online_format(@book).url, target: "_blank" %><span>.</span>
           </div>
         </div>
       </div>

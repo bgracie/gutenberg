@@ -19,6 +19,7 @@
 @import "node_modules/bootstrap/scss/pagination";
 @import "node_modules/bootstrap/scss/transitions";
 @import "node_modules/bootstrap/scss/type";
+@import "node_modules/bootstrap/scss/badge";
 
 
 #_navbar__search_term {
@@ -75,12 +76,24 @@
   #_front__banner {
     padding-top: 200px;
   }
+
+  #_main {
+    min-height: calc(100% - 96px);
+  }
 }
 
 @media only screen and (max-height: 600px) {
 
   #_front__banner {
     padding-top: 30px;
+  }
+
+  html {
+    font-size: 65%;
+  }
+
+  #_main {
+    min-height: calc(100% - 62.4px);
   }
 }
 
@@ -122,6 +135,6 @@
   text-align: center;
 }
 
-#_main {
-  min-height: calc(100% - 96px);
+._result_card {
+  margin-bottom: 10px;
 }
