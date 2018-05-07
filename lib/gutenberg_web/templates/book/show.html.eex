@@ -18,12 +18,21 @@
         <% end %>
       </ul>
     </li>
-  </u>
+  </ul>
   <div class="accordion">
     <%= if online_format(@book) do %>
       <div class="card">
         <div class="card-header">
-          <%= link "Read online", to: online_format(@book).url, target: "_blank" %>
+          <%= link("Read Online",
+            to: "#_online_instructions",
+            data: [toggle: "collapse"])%>
+        </div>
+        <div class="collapse" id="_online_instructions">
+          <div class="card-body">
+            <span>The text is available </span>
+            <%= link "here", to: online_format(@book).url, target: "_blank" %>
+            <span>.</span>
+          </div>
         </div>
       </div>
     <% end %>

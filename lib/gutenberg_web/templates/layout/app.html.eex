@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body>
-    <div>
+  <body style="height: 100%">
+    <div style="height: 100%">
       <header class="_header">
         <nav role="navigation" id="_navbar" class="navbar">
           <a class="navbar-brand" href="/">
@@ -42,7 +42,7 @@
         <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <% end %>
 
-      <main role="main">
+      <main role="main" id="_main">
         <%= render @view_module, @view_template, assigns %>
       </main>
 

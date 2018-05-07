@@ -28,6 +28,7 @@
 
 #_bottom_nav {
   background-color: $light;
+  width: 100%;
 }
 
 @media only screen and (max-width: 700px) {
@@ -63,6 +64,23 @@
 @media only screen and (min-width: 820px) {
   #_front__search_form {
     width: 820px;
+  }
+}
+
+@media only screen and (min-height: 600px) {
+  #_bottom_nav {
+    width: 100%;
+  }
+
+  #_front__banner {
+    padding-top: 200px;
+  }
+}
+
+@media only screen and (max-height: 600px) {
+
+  #_front__banner {
+    padding-top: 30px;
   }
 }
 
@@ -102,4 +120,8 @@
   display: block;
   margin: 0 auto;
   text-align: center;
+}
+
+#_main {
+  min-height: calc(100% - 96px);
 }
