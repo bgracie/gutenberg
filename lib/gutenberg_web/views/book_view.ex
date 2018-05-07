@@ -31,7 +31,7 @@ defmodule GutenbergWeb.BookView do
   def formats_with_labels(book) do
     book.book_formats
     |> Enum.map(&{&1, mime_type_with_label(&1.format.mime_type)})
-    |> Enum.sort_by(fn ({format, mime_type_label}) ->
+    |> Enum.sort_by(fn ({_, mime_type_label}) ->
       { String.contains?(mime_type_label, "Other"), mime_type_label }
     end)
   end

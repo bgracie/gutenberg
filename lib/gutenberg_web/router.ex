@@ -28,11 +28,9 @@ defmodule GutenbergWeb.Router do
   scope "/:locale", GutenbergWeb do
     pipe_through :browser
 
-    resources "/books", BookController
-    resources "/authors", AuthorController
-    resources "/formats", FormatController
-    resources "/languages", LanguageController
-    resources "/subjects", SubjectController
+    resources "/books", BookController, only: [:show]
+    resources "/authors", AuthorController, only: [:show]
+    resources "/subjects", SubjectController, only: [:show]
 
     post "/search", PageController, :search
     get "/search", PageController, :search
