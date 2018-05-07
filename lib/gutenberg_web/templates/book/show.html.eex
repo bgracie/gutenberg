@@ -3,10 +3,8 @@
 
   <h2><%= @book.title %></h2>
 
-  <h4>by <%= link Enum.at(@book.authors, 0).name,
-    to: author_path(@conn, :show, locale(), Enum.at(@book.authors, 0)) %></h4>
-
-  <p style="margin-bottom: 0px">Written in <%=language_labels(@book)%></p>
+  <h6>by <%= link Enum.at(@book.authors, 0).name,
+    to: author_path(@conn, :show, locale(), Enum.at(@book.authors, 0)) %> (in <%=language_labels(@book)%>)</h6>
   <div style="margin-bottom: 10px">
     <%= for s <- @book.subjects do %>
       <%=link("#{s.name}",
