@@ -57,7 +57,7 @@ msgid "books"
 msgstr ""
 
 #: lib/gutenberg_web/templates/book/show.html.eex:6
-#: lib/gutenberg_web/templates/page/search.html.eex:51
+#: lib/gutenberg_web/templates/page/search.html.eex:54
 msgid "by"
 msgstr ""
 
@@ -89,4 +89,8 @@ msgstr ""
 #: lib/gutenberg_web/templates/layout/app.html.eex:33
 #: lib/gutenberg_web/templates/page/index.html.eex:14
 msgid "Search"
+msgstr ""
+
+#: lib/gutenberg_web/templates/page/search.html.eex:37
+msgid "No results"
 msgstr ""

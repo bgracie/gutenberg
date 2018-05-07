@@ -33,6 +33,9 @@
       </a>
     </li>
   </ul>
+  <%= if @page.entries == [] do %>
+    <p><%= gettext("No results") %></p>
+  <% end %>
   <div>
     <%= for result <- @page.entries do %>
       <div class="card _result_card">
