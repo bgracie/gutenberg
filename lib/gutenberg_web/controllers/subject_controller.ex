@@ -3,11 +3,6 @@ defmodule GutenbergWeb.SubjectController do
 
   alias Gutenberg.Books.Subjects
 
-  def index(conn, _params) do
-    subjects = Subjects.list()
-    render(conn, "index.html", subjects: subjects)
-  end
-
   def show(conn, %{"id" => id}) do
     subject = Subjects.get!(id)
       |> Gutenberg.Repo.preload([books: :authors])
