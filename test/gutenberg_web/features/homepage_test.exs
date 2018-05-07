@@ -6,7 +6,7 @@ defmodule GutenbergWeb.HomepageTest do
   test "can visit the homepage", %{session: session} do
     session
     |> visit("/")
-    |> assert_has(css("._front__banner", text: "Gutenberg"))
+    |> assert_has(css("#_front__banner", text: "Gutenberg"))
     |> assert_has(css("._footer__link", text: "Volunteer"))
   end
 
@@ -15,6 +15,6 @@ defmodule GutenbergWeb.HomepageTest do
     |> visit("/")
     |> click(css("._locale_dropdown__toggle", text: "en"))
     |> click(css("._locale_dropdown__link", text: "fr"))
-    |> assert_has(css("._front__search_button", text: "Chercher"))
+    |> assert_has(css("._footer__link", text: "Termes et conditions"))
   end
 end
