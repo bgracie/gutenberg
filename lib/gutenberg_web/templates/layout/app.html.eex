@@ -15,7 +15,7 @@
     <div style="height: 100%">
       <header class="_header">
         <nav role="navigation" id="_navbar" class="navbar">
-          <a class="navbar-brand" href="/">
+          <a class="navbar-brand" href="/<%=locale() %>">
             <span>Project Gutenberg</span>
           </a>
           <%= render GutenbergWeb.LayoutView, "language_dropdown.html", conn: @conn %>
@@ -30,7 +30,7 @@
                 value: "",
                 class: "form-control",
                 id: "_navbar__search_term",
-                placeholder: raw("&#xF002;   Search"))%>
+                placeholder: raw("&#xF002;   #{gettext("Search")}"))%>
             </div>
           <% end %>
         </nav>

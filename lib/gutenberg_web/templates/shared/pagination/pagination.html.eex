@@ -2,7 +2,7 @@
   <ul class="pagination">
     <li class='<%=prev_classes(@page)%>'>
       <%= link(
-        "Prev",
+        gettext("prev") |> String.capitalize,
         to: page_link(@page, (@page.page_number - 1), @linkfn, @conn),
         class: "page-link")%>
     </li>
@@ -45,7 +45,7 @@
       linkfn: @linkfn)%>
     <li class='<%=next_classes(@page)%>'>
       <%= link(
-        "Next",
+        gettext("next") |> String.capitalize,
         to: page_link(@page, (@page.page_number + 1), @linkfn, @conn),
         class: "page-link")%>
     </li>

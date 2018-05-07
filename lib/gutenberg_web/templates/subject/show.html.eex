@@ -1,5 +1,5 @@
 <div class="main__container">
-  <h1><%= "Books related to \'#{@subject.name}\'" %></h1>
+  <h1><%= gettext("Books related to ") <> "\'#{@subject.name}\'" %></h1>
 
   <%= for book <- @subject.books do %>
     <div class="card" class="_result_card">

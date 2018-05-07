@@ -14,18 +14,28 @@
   <% end %>
 
   <ul class="nav nav-tabs" style="margin-bottom: 20px">
-    <%= for collection <- ["books", "authors", "subjects"] do %>
-      <li class="nav-item">
-        <a class="<%=search_tab_classes(collection, @collection)%>"
-          href="<%=search_tab_link(collection, @collection, @search_params, @conn)%>">
-          <%= collection |> String.capitalize %>
-        </a>
-      </li>
-    <% end %>
+    <li class="nav-item">
+      <a class="<%=search_tab_classes("books", @collection)%>"
+        href="<%=search_tab_link("books", @collection, @search_params, @conn)%>">
+        <%= gettext("books") |> String.capitalize %>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="<%=search_tab_classes("authors", @collection)%>"
+        href="<%=search_tab_link("authors", @collection, @search_params, @conn)%>">
+        <%= gettext("authors") |> String.capitalize %>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="<%=search_tab_classes("subjects", @collection)%>"
+        href="<%=search_tab_link("subjects", @collection, @search_params, @conn)%>">
+        <%= gettext("subjects") |> String.capitalize %>
+      </a>
+    </li>
   </ul>
   <div>
     <%= for result <- @page.entries do %>
-      <div class="card" class="_result_card">
+      <div class="card _result_card">
         <div class="card-body">
           <%= case @collection do %>
           <% "books" -> %>
@@ -38,7 +48,7 @@
               <% end %>
             </div>
             <div class="card-subtitle">
-              <%= "by #{Gutenberg.Books.Book.author_name(result)}" %>
+              <%= "#{gettext("by")} #{Gutenberg.Books.Book.author_name(result)}" %>
             </div>
           <% "authors" -> %>
             <div class="card-title">

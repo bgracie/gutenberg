@@ -3,8 +3,8 @@
 
   <h2><%= @book.title %></h2>
 
-  <h6>by <%= link Enum.at(@book.authors, 0).name,
-    to: author_path(@conn, :show, locale(), Enum.at(@book.authors, 0)) %> (in <%=language_labels(@book)%>)</h6>
+  <h6><%=gettext("by")%> <%= link Enum.at(@book.authors, 0).name,
+    to: author_path(@conn, :show, locale(), Enum.at(@book.authors, 0)) %> (<%= gettext("in") <> " " <> language_labels(@book)%>)</h6>
   <div style="margin-bottom: 10px">
     <%= for s <- @book.subjects do %>
       <%=link("#{s.name}",
@@ -16,13 +16,13 @@
     <%= if online_format(@book) do %>
       <div class="card">
         <div class="card-header">
-          <%= link("Read Online",
+          <%= link(gettext("Read Online"),
             to: "#_online_instructions",
             data: [toggle: "collapse"])%>
         </div>
         <div class="collapse" id="_online_instructions">
           <div class="card-body">
-            <span>The text is available </span><%= link "here", to: online_format(@book).url, target: "_blank" %><span>.</span>
+            <span><%= gettext("The text is available")%> </span><%= link gettext("here"), to: online_format(@book).url, target: "_blank" %><span>.</span>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
     <%= if kindle_format(@book) do %>
       <div class="card">
         <div class="card-header">
-          <%= link("Read on a Kindle",
+          <%= link(gettext("Read on a Kindle"),
             to: "#_kindle_instructions",
             data: [toggle: "collapse"])%>
         </div>
@@ -44,7 +44,7 @@
     <%= if ereader_format(@book) do %>
       <div class="card">
         <div class="card-header">
-          <%= link("Read on a Non-Kindle E-Reader",
+          <%= link(gettext("Read on a Non-Kindle E-Reader"),
             to: "#_ereader_instructions",
             data: [toggle: "collapse"])%>
         </div>
@@ -57,7 +57,7 @@
     <% end %>
     <div class="card">
       <div class="card-header">
-        <%= link("See all formats",
+        <%= link(gettext("See all formats"),
           to: "#_all_formats",
           data: [toggle: "collapse"])%>
       </div>

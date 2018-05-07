@@ -10,19 +10,83 @@
 msgid ""
 msgstr ""
 
-#: lib/gutenberg_web/templates/layout/app.html.eex:25
-#: lib/gutenberg_web/templates/page/index.html.eex:7
-msgid "Search"
-msgstr ""
-
-#: lib/gutenberg_web/templates/layout/app.html.eex:49
+#: lib/gutenberg_web/templates/layout/app.html.eex:54
 msgid "Donate"
 msgstr ""
 
-#: lib/gutenberg_web/templates/layout/app.html.eex:44
+#: lib/gutenberg_web/templates/layout/app.html.eex:51
 msgid "Terms & Conditions"
 msgstr ""
 
-#: lib/gutenberg_web/templates/layout/app.html.eex:54
+#: lib/gutenberg_web/templates/layout/app.html.eex:57
 msgid "Volunteer"
+msgstr ""
+
+#: lib/gutenberg_web/templates/author/show.html.eex:3
+msgid "Books by"
+msgstr ""
+
+#: lib/gutenberg_web/templates/subject/show.html.eex:2
+msgid "Books related to "
+msgstr ""
+
+#: lib/gutenberg_web/templates/book/show.html.eex:33
+msgid "Read on a Kindle"
+msgstr ""
+
+#: lib/gutenberg_web/templates/book/show.html.eex:47
+msgid "Read on a Non-Kindle E-Reader"
+msgstr ""
+
+#: lib/gutenberg_web/templates/book/show.html.eex:60
+msgid "See all formats"
+msgstr ""
+
+#: lib/gutenberg_web/templates/book/show.html.eex:25
+msgid "The text is available"
+msgstr ""
+
+#: lib/gutenberg_web/templates/page/index.html.eex:19
+#: lib/gutenberg_web/templates/page/search.html.eex:26
+msgid "authors"
+msgstr ""
+
+#: lib/gutenberg_web/templates/page/index.html.eex:18
+#: lib/gutenberg_web/templates/page/search.html.eex:20
+msgid "books"
+msgstr ""
+
+#: lib/gutenberg_web/templates/book/show.html.eex:6
+#: lib/gutenberg_web/templates/page/search.html.eex:51
+msgid "by"
+msgstr ""
+
+#: lib/gutenberg_web/templates/book/show.html.eex:25
+msgid "here"
+msgstr ""
+
+#: lib/gutenberg_web/templates/book/show.html.eex:7
+msgid "in"
+msgstr ""
+
+#: lib/gutenberg_web/templates/shared/pagination/pagination.html.eex:48
+msgid "next"
+msgstr ""
+
+#: lib/gutenberg_web/templates/shared/pagination/pagination.html.eex:5
+msgid "prev"
+msgstr ""
+
+#: lib/gutenberg_web/templates/page/index.html.eex:20
+#: lib/gutenberg_web/templates/page/search.html.eex:32
+msgid "subjects"
+msgstr ""
+
+#: lib/gutenberg_web/templates/book/show.html.eex:19
+msgid "Read Online"
+msgstr ""
+
+#: lib/gutenberg_web/templates/layout/app.html.eex:33
+#: lib/gutenberg_web/templates/page/index.html.eex:14
+msgid "Search"
 msgstr ""

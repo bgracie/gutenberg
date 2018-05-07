@@ -11,10 +11,14 @@
       :term,
       id: "_front__search_term",
       class: "form-control",
-      placeholder: raw("&#xF002;   Search"))%>
+      placeholder: raw("&#xF002;   #{gettext("Search")}"))%>
     <%= select(f,
       :collection,
-      [{"Books", "books"}, {"Authors", "authors"}, {"Subjects", "subjects"}],
+      [
+        {gettext("books") |> String.capitalize(), "books"},
+        {gettext("authors") |> String.capitalize(), "authors"},
+        {gettext("subjects") |> String.capitalize(), "subjects"}
+      ],
       class: "form-control",
       id: "_front__search_col") %>
     <br>

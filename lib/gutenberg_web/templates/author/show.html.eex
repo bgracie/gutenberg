@@ -1,6 +1,6 @@
 <div class="main__container">
 
-  <h1><%= "Books by #{@author.name}" %></h2>
+  <h1><%= "#{gettext("Books by")} #{@author.name}" %></h2>
 
   <%= for book <- @author.books do %>
     <div class="card" class="_result_card">
