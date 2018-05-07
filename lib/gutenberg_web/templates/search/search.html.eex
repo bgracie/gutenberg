@@ -45,7 +45,7 @@
             <div class="card-title">
               <%= link(to: book_path(@conn, :show, locale(), result.id)) do %>
                 <%= render(
-                  GutenbergWeb.PageView,
+                  GutenbergWeb.SearchView,
                   "result_label.html",
                   fragments: fragments(@search_params["term"], result.title))%>
               <% end %>
@@ -57,7 +57,7 @@
             <div class="card-title">
               <%= link(to: author_path(@conn, :show, locale(), result.id)) do %>
                 <%= render(
-                  GutenbergWeb.PageView,
+                  GutenbergWeb.SearchView,
                   "result_label.html",
                   fragments: fragments(@search_params["term"], result.name)) %>
               <% end %>
@@ -66,7 +66,7 @@
             <div class="card-title">
               <%= link(to: subject_path(@conn, :show, locale(), result.id)) do %>
                 <%= render(
-                  GutenbergWeb.PageView,
+                  GutenbergWeb.SearchView,
                   "result_label.html",
                   fragments: fragments(@search_params["term"], result.name)) %>
               <% end %>
@@ -83,7 +83,7 @@
     conn: @conn,
     page: @page,
     linkfn: fn (conn, page) ->
-      page_path(
+      search_path(
         conn,
         :search,
         locale(),

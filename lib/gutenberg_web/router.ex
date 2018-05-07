@@ -32,9 +32,9 @@ defmodule GutenbergWeb.Router do
     resources "/authors", AuthorController, only: [:show]
     resources "/subjects", SubjectController, only: [:show]
 
-    post "/search", PageController, :search
-    get "/search", PageController, :search
-    get "/", PageController, :index
+    post "/search", SearchController, :search
+    get "/search", SearchController, :search
+    get "/", FrontController, :index
   end
 
   # Other scopes may use custom stacks.

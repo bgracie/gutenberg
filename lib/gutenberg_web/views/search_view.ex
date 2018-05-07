@@ -1,4 +1,4 @@
-defmodule GutenbergWeb.PageView do
+defmodule GutenbergWeb.SearchView do
   use GutenbergWeb, :view
 
   def search_tab_classes(tab_collection, collection)
@@ -14,7 +14,7 @@ defmodule GutenbergWeb.PageView do
       |> Map.drop(["page"])
       |> Map.put("collection", tab_collection)
 
-    page_path(
+    search_path(
       conn,
       :search,
       locale(),

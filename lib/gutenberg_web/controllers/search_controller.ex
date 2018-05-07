@@ -1,16 +1,9 @@
-defmodule GutenbergWeb.PageController do
+defmodule GutenbergWeb.SearchController do
   use GutenbergWeb, :controller
 
   import Ecto.Query, warn: false
 
   @results_per_page 8
-
-  def index(conn, _params) do
-    render(
-      conn,
-      "index.html"
-    )
-  end
 
   def search(conn, %{"search" => search_params })do
     with collection when collection in ["books", "authors", "subjects"]
@@ -19,7 +12,7 @@ defmodule GutenbergWeb.PageController do
       page = (search_params["page"] || 1) |> Gutenberg.Utils.ensure_int()
     do
       page = apply(
-        GutenbergWeb.PageController,
+        GutenbergWeb.SearchController,
         String.to_atom(collection),
         [term, page]
       )
