@@ -15,8 +15,16 @@ use Mix.Config
 # which you typically run after static files are built.
 config :gutenberg, GutenbergWeb.Endpoint,
   load_from_system_env: true,
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  http: [:inet6, port: System.get_env("PORT")],
+  url: [host: System.get_env("WEB_HOST"), port: 80],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
+
+config :gutenberg, Gutenberg.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "gutenberg_prod",
+  url: System.get_env("DATABASE_URL"),
+  pool_size: 15
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -61,4 +69,4 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"
