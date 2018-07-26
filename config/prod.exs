@@ -24,7 +24,7 @@ config :gutenberg, Gutenberg.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "gutenberg_prod",
   url: System.get_env("DATABASE_URL"),
-  pool_size: 15
+  pool_size: 5
 
 # Do not print debug messages in production
 config :logger, level: :info
