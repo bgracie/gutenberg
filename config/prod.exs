@@ -22,7 +22,7 @@ config :gutenberg, GutenbergWeb.Endpoint,
 
 config :gutenberg, Gutenberg.Repo,
   adapter: Ecto.Adapters.Postgres,
-  database: "gutenberg_prod",
+  database: "gutenberg-database",
   url: System.get_env("DATABASE_URL"),
   pool_size: 5
 
