@@ -15,4 +15,6 @@ dokku postgres:link gutenberg-database gutenberg
 dokku run mix ecto.migrate
 dokku run mix run priv/repo/seeds.exs
 dokku domains add gutenberg <domain>
+dokku domains remove gutenberg gutenberg
+dokku letsencrypt
 ```
