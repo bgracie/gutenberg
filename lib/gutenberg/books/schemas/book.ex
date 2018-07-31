@@ -3,6 +3,10 @@ defmodule Gutenberg.Books.Book do
   import Ecto.Changeset
   import Ecto.Query
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+  @foreign_key_type :binary_id
+  @derive {Phoenix.Param, key: :id}
+
   schema "books" do
     field :title, :string
 
