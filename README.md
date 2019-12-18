@@ -1,8 +1,8 @@
 # Gutenberg
 
-Gutenberg is an alternate interface for the Project Gutenberg collection.
+Gutenberg is an experimental alternate interface for the Project Gutenberg collection.
 
-# Deploy to dokku
+# Deploy to Dokku
 
 ```
 git remote add dokku dokku@<dokku-host-ip>:gutenberg
