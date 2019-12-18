@@ -1,0 +1,26 @@
+{
+  "0": {
+    "subjects": [
+      "United States. Declaration of Independence",
+      "United States -- History -- Revolution, 1775-1783 -- Sources"
+    ],
+    "formats": {
+      "text/html": "http://www.gutenberg.org/ebooks/1.html.noimages",
+      "application/epub+zip": "http://www.gutenberg.org/ebooks/1.epub.noimages"
+    },
+    "downloads": 632,
+    "type": "Text",
+    "LCC": [
+      "JK",
+      "E201"
+    ],
+    "language": [
+      "en"
+    ],
+    "title": "The Declaration of Independence of the United States of America",
+    "id": 1,
+    "authoryearofdeath": 1826,
+    "authoryearofbirth": 1743,
+    "author": "Jefferson, Thomas"
+  }
+}

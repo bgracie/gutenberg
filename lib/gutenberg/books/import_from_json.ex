@@ -1,6 +1,6 @@
 defmodule Gutenberg.Books.ImportFromJson do
-  def exec do
-    "priv/books.json"
+  def exec(path) do
+    path
     |> File.read!()
     |> Jason.decode!()
     |> Map.values()

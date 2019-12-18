@@ -2,8 +2,8 @@ defmodule Gutenberg.Books.Seed do
   alias Gutenberg.Repo
   alias Gutenberg.Books
 
-  def exec do
-    imported_books = import_books()
+  def exec(path \\ "priv/books.json") do
+    imported_books = import_books(path)
     write_books(imported_books)
     stored_books_ = stored_books()
     write_formats(imported_books, stored_books_)
@@ -12,8 +12,8 @@ defmodule Gutenberg.Books.Seed do
     write_authors(imported_books, stored_books_)
   end
 
-  defp import_books do
-    Books.ImportFromJson.exec()
+  defp import_books(path) do
+    Books.ImportFromJson.exec(path)
     |> Enum.filter(&(!is_nil(&1["title"]) && String.length(&1["title"]) < 200))
     |> Enum.filter(&(!is_nil(&1["author"])))
     |> Enum.uniq_by(& &1["title"])

@@ -15,8 +15,8 @@ defmodule Gutenberg.Repo do
 
   def now_timestamps do
     %{
-      inserted_at: DateTime.utc_now(),
-      updated_at: DateTime.utc_now()
+      inserted_at: DateTime.truncate(DateTime.utc_now(), :second),
+      updated_at: DateTime.truncate(DateTime.utc_now(), :second)
     }
   end
 

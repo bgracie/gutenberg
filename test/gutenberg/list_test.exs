@@ -1,8 +1,6 @@
 defmodule Gutenberg.ListTest do
   use ExUnit.Case, async: true
 
-  @tag mustexec: true
-
   describe "Gutenberg.List.to_sentence/1" do
     test "no members" do
       assert Gutenberg.List.to_sentence([]) == ""

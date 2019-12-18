@@ -50,4 +50,8 @@ defmodule Gutenberg.DataCase do
       end)
     end)
   end
+
+  def fixtures_path do
+    Path.join([__DIR__, "..", "fixtures"])
+  end
 end
