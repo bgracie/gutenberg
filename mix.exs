@@ -43,7 +43,7 @@ defmodule Gutenberg.Mixfile do
       {:gettext, "~> 0.14"},
       {:plug_cowboy, "~> 2.0"},
       {:jason, "~> 1.1.2"},
-      {:wallaby, "~> 0.19.2", [runtime: false, only: :test]},
+      {:wallaby, "~> 0.23.0", [runtime: false, only: :test]},
       {:set_locale, "~> 0.2.8"},
       {:scrivener_ecto, "~> 2.2.0"},
     ]
