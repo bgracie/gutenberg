@@ -5,7 +5,7 @@ defmodule Gutenberg.Mixfile do
     [
       app: :gutenberg,
       version: "0.0.1",
-      elixir: "~> 1.6",
+      elixir: "~> 1.9.4",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
@@ -59,7 +59,7 @@ defmodule Gutenberg.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test": [
+      test: [
         "assets.compile --quiet",
         "ecto.create --quiet",
         "ecto.migrate",
