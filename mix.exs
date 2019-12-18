@@ -33,18 +33,18 @@ defmodule Gutenberg.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.3.0"},
+      {:phoenix, "~> 1.4.11"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "0.13.1"},
-      {:cowboy, "~> 1.0"},
+      {:phoenix_live_reload, "~> 1.2.1", only: :dev},
+      {:gettext, "~> 0.14"},
+      {:plug_cowboy, "~> 2.0"},
       {:poison, "~> 3.1"},
       {:wallaby, "~> 0.19.2", [runtime: false, only: :test]},
-      {:set_locale, "~> 0.2.4"},
-      {:scrivener_ecto, "~> 1.0"}
+      {:set_locale, "~> 0.2.8"},
+      {:scrivener_ecto, "~> 1.0"},
     ]
   end
 
