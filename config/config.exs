@@ -9,6 +9,8 @@ use Mix.Config
 config :gutenberg,
   ecto_repos: [Gutenberg.Repo]
 
+config :phoenix, :json_library, Jason
+
 # Configures the endpoint
 config :gutenberg, GutenbergWeb.Endpoint,
   url: [host: "localhost"],
