@@ -20,8 +20,8 @@ defmodule GutenbergWeb.Router do
   scope "/", GutenbergWeb do
     pipe_through :browser
 
-    # Will never be called
-    get "/", PageController, :dummy
+    # Will never be called, since locale prefix is always set
+    get "/", PageController, :noop
   end
 
 

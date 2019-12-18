@@ -1,5 +1,7 @@
 defmodule Gutenberg.Repo do
-  use Ecto.Repo, otp_app: :gutenberg
+  use Ecto.Repo,
+    otp_app: :gutenberg,
+    adapter: Ecto.Adapters.Postgres
   use Scrivener, page_size: 5
 
   @doc """

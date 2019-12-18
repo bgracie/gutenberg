@@ -35,16 +35,17 @@ defmodule Gutenberg.Mixfile do
     [
       {:phoenix, "~> 1.4.11"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
+      {:phoenix_ecto, "~> 4.1.0"},
+      {:ecto_sql, "~> 3.3.2"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 2.10"},
+      {:phoenix_html, "~> 2.13.3"},
       {:phoenix_live_reload, "~> 1.2.1", only: :dev},
       {:gettext, "~> 0.14"},
       {:plug_cowboy, "~> 2.0"},
       {:poison, "~> 3.1"},
       {:wallaby, "~> 0.19.2", [runtime: false, only: :test]},
       {:set_locale, "~> 0.2.8"},
-      {:scrivener_ecto, "~> 1.0"},
+      {:scrivener_ecto, "~> 2.2.0"},
     ]
   end
 
