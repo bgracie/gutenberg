@@ -2,7 +2,7 @@ defmodule Gutenberg.Books.ImportFromJson do
   def exec do
     "priv/books.json"
     |> File.read!()
-    |> Poison.decode!()
+    |> Jason.decode!()
     |> Map.values()
   end
 

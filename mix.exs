@@ -42,7 +42,7 @@ defmodule Gutenberg.Mixfile do
       {:phoenix_live_reload, "~> 1.2.1", only: :dev},
       {:gettext, "~> 0.14"},
       {:plug_cowboy, "~> 2.0"},
-      {:poison, "~> 3.1"},
+      {:jason, "~> 1.1.2"},
       {:wallaby, "~> 0.19.2", [runtime: false, only: :test]},
       {:set_locale, "~> 0.2.8"},
       {:scrivener_ecto, "~> 2.2.0"},
