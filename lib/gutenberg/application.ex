@@ -11,7 +11,7 @@ defmodule Gutenberg.Application do
       # Start the Ecto repository
       supervisor(Gutenberg.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(GutenbergWeb.Endpoint, []),
+      supervisor(GutenbergWeb.Endpoint, [])
       # Start your own worker by calling: Gutenberg.Worker.start_link(arg1, arg2, arg3)
       # worker(Gutenberg.Worker, [arg1, arg2, arg3]),
     ]

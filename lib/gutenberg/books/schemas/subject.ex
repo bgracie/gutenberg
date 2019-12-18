@@ -11,8 +11,8 @@ defmodule Gutenberg.Books.Subject do
     field :name, :string
 
     many_to_many :books,
-      Gutenberg.Books.Book,
-      join_through: Gutenberg.Books.BookSubject
+                 Gutenberg.Books.Book,
+                 join_through: Gutenberg.Books.BookSubject
 
     timestamps(type: :utc_datetime)
   end

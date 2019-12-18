@@ -1,5 +1,4 @@
 defmodule Gutenberg.LanguageCodes do
-
   @iso639_1_codes %{
     "lo" => "Laotian",
     "eo" => "Esperanto",

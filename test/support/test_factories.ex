@@ -1,5 +1,4 @@
 defmodule Gutenberg.TestFactories do
-
   alias Gutenberg.Repo
   alias Gutenberg.Books
 
@@ -17,5 +16,4 @@ defmodule Gutenberg.TestFactories do
       subject: subject
     })
   end
-
 end

@@ -7,6 +7,7 @@ defmodule GutenbergWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+
     plug SetLocale,
       gettext: GutenbergWeb.Gettext,
       default_locale: "en",
@@ -23,7 +24,6 @@ defmodule GutenbergWeb.Router do
     # Will never be called, since locale prefix is always set
     get "/", PageController, :noop
   end
-
 
   scope "/:locale", GutenbergWeb do
     pipe_through :browser

@@ -6,9 +6,9 @@ defmodule Gutenberg.Mixfile do
       app: :gutenberg,
       version: "0.0.1",
       elixir: "~> 1.9.4",
-      elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers,
-      start_permanent: Mix.env == :prod,
+      elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
     ]
@@ -26,7 +26,7 @@ defmodule Gutenberg.Mixfile do
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_),     do: ["lib"]
+  defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
   #
@@ -45,7 +45,7 @@ defmodule Gutenberg.Mixfile do
       {:jason, "~> 1.1.2"},
       {:wallaby, "~> 0.23.0", [runtime: false, only: :test]},
       {:set_locale, "~> 0.2.8"},
-      {:scrivener_ecto, "~> 2.2.0"},
+      {:scrivener_ecto, "~> 2.2.0"}
     ]
   end
 
@@ -70,6 +70,6 @@ defmodule Gutenberg.Mixfile do
   end
 
   defp compile_assets(_) do
-    Mix.shell.cmd("assets/node_modules/brunch/bin/brunch build assets/")
+    Mix.shell().cmd("assets/node_modules/brunch/bin/brunch build assets/")
   end
 end

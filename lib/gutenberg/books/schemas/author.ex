@@ -13,8 +13,8 @@ defmodule Gutenberg.Books.Author do
     field :year_of_death, :integer
 
     many_to_many :books,
-      Gutenberg.Books.Book,
-      join_through: Gutenberg.Books.BookAuthor
+                 Gutenberg.Books.Book,
+                 join_through: Gutenberg.Books.BookAuthor
 
     timestamps(type: :utc_datetime)
   end

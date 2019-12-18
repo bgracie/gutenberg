@@ -11,23 +11,23 @@ defmodule Gutenberg.Books.Book do
     field :title, :string
 
     many_to_many :authors,
-      Gutenberg.Books.Author,
-      join_through: Gutenberg.Books.BookAuthor
+                 Gutenberg.Books.Author,
+                 join_through: Gutenberg.Books.BookAuthor
 
     many_to_many :formats,
-      Gutenberg.Books.Format,
-      join_through: Gutenberg.Books.BookFormat
+                 Gutenberg.Books.Format,
+                 join_through: Gutenberg.Books.BookFormat
 
     has_many :book_formats,
-      Gutenberg.Books.BookFormat
+             Gutenberg.Books.BookFormat
 
     many_to_many :languages,
-      Gutenberg.Books.Language,
-      join_through: Gutenberg.Books.BookLanguage
+                 Gutenberg.Books.Language,
+                 join_through: Gutenberg.Books.BookLanguage
 
     many_to_many :subjects,
-      Gutenberg.Books.Subject,
-      join_through: Gutenberg.Books.BookSubject
+                 Gutenberg.Books.Subject,
+                 join_through: Gutenberg.Books.BookSubject
 
     timestamps(type: :utc_datetime)
   end

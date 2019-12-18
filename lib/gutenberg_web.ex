@@ -28,8 +28,9 @@ defmodule GutenbergWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/gutenberg_web/templates",
-                        namespace: GutenbergWeb
+      use Phoenix.View,
+        root: "lib/gutenberg_web/templates",
+        namespace: GutenbergWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]

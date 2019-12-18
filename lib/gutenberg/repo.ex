@@ -2,6 +2,7 @@ defmodule Gutenberg.Repo do
   use Ecto.Repo,
     otp_app: :gutenberg,
     adapter: Ecto.Adapters.Postgres
+
   use Scrivener, page_size: 5
 
   @doc """
@@ -20,10 +21,9 @@ defmodule Gutenberg.Repo do
   end
 
   def chunked_insert_all(module, records)
-    when is_atom(module) and is_list(records) do
-
+      when is_atom(module) and is_list(records) do
     records
     |> Enum.chunk_every(1000)
-    |> Enum.each(fn (chunk) -> insert_all(module, chunk) end)
+    |> Enum.each(fn chunk -> insert_all(module, chunk) end)
   end
 end

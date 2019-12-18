@@ -5,17 +5,17 @@ defmodule GutenbergWeb.SearchController do
 
   @results_per_page 8
 
-  def search(conn, %{"search" => search_params })do
-    with collection when collection in ["books", "authors", "subjects"]
-      <- (search_params["collection"] || "books"),
-      term = search_params["term"],
-      page = (search_params["page"] || 1) |> Gutenberg.Utils.ensure_int()
-    do
-      page = apply(
-        GutenbergWeb.SearchController,
-        String.to_atom(collection),
-        [term, page]
-      )
+  def search(conn, %{"search" => search_params}) do
+    with collection when collection in ["books", "authors", "subjects"] <-
+           search_params["collection"] || "books",
+         term = search_params["term"],
+         page = (search_params["page"] || 1) |> Gutenberg.Utils.ensure_int() do
+      page =
+        apply(
+          GutenbergWeb.SearchController,
+          String.to_atom(collection),
+          [term, page]
+        )
 
       render(
         conn,

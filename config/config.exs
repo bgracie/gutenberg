@@ -16,8 +16,7 @@ config :gutenberg, GutenbergWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "CgM0JUUQds4JUzDbUswAePWpCpWYoOHFumdp7tHtzZPe/P9c7/ibE9R8geEPd2kG",
   render_errors: [view: GutenbergWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Gutenberg.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Gutenberg.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -25,10 +24,10 @@ config :logger, :console,
   metadata: [:request_id]
 
 config :gutenberg,
-  GutenbergWeb.Gettext,
-  default_locale: "en",
-  locales: ~w(en fr)
+       GutenbergWeb.Gettext,
+       default_locale: "en",
+       locales: ~w(en fr)
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

@@ -6,9 +6,10 @@ defmodule GutenbergWeb.BookController do
   alias Gutenberg.Repo
 
   def show(conn, %{"id" => id}) do
-    book = Books.get!(id)
+    book =
+      Books.get!(id)
       |> Repo.preload([:authors, :subjects, :languages])
-      |> Repo.preload([book_formats: :format])
+      |> Repo.preload(book_formats: :format)
 
     render(conn, "show.html", book: book)
   end

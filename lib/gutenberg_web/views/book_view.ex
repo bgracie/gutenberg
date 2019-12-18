@@ -7,14 +7,14 @@ defmodule GutenbergWeb.BookView do
 
   def language_labels(book) do
     book.languages
-    |> Enum.map(&(&1.code))
+    |> Enum.map(& &1.code)
     |> Enum.map(&Gutenberg.LanguageCodes.label/1)
     |> Gutenberg.List.to_sentence()
   end
 
   def online_format(book) do
     book.book_formats
-    |> Enum.filter(&(String.contains?(&1.format.mime_type, "text/html")))
+    |> Enum.filter(&String.contains?(&1.format.mime_type, "text/html"))
     |> Enum.at(0)
   end
 
@@ -31,8 +31,8 @@ defmodule GutenbergWeb.BookView do
   def formats_with_labels(book) do
     book.book_formats
     |> Enum.map(&{&1, mime_type_with_label(&1.format.mime_type)})
-    |> Enum.sort_by(fn ({_, mime_type_label}) ->
-      { String.contains?(mime_type_label, "Other"), mime_type_label }
+    |> Enum.sort_by(fn {_, mime_type_label} ->
+      {String.contains?(mime_type_label, "Other"), mime_type_label}
     end)
   end
 
