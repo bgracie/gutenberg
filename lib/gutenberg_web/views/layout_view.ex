@@ -6,7 +6,6 @@ defmodule GutenbergWeb.LayoutView do
   end
 
   def with_new_locale(%{request_path: request_path}, new_locale) do
-    request_path
-    |> String.replace(~r/\A\/#{locale()}/, "/#{new_locale}")
+    String.replace(request_path, ~r/\A\/#{locale()}/, "/#{new_locale}")
   end
 end

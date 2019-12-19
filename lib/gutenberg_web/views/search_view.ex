@@ -26,7 +26,8 @@ defmodule GutenbergWeb.SearchView do
   end
 
   def fragments(search_term, result_label) do
-    Regex.split(~r/#{search_term}/i, result_label, include_captures: true)
+    ~r/#{search_term}/i
+    |> Regex.split(result_label, include_captures: true)
     |> Enum.map(&decorate_fragment_label(&1, search_term))
   end
 
