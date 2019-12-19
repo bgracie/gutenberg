@@ -7,7 +7,7 @@ defmodule Gutenberg.ImportCatalog.WriteFormatsToDb do
     |> List.flatten()
     |> Enum.uniq()
     |> Enum.map(&build_format_record/1)
-    |> Gutenberg.ImportCatalog.SharedFunctions.insert_all(Db.Format)
+    |> Pipe.to(&Repo.chunked_insert_all(Db.Format, &1))
   end
 
   defp get_formats(book_from_json) do

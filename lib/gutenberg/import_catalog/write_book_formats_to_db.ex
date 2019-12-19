@@ -6,7 +6,7 @@ defmodule Gutenberg.ImportCatalog.WriteBookFormatsToDb do
     books_from_json
     |> Enum.map(&build_book_formats(&1, books_from_db, formats_from_db))
     |> List.flatten()
-    |> SharedFunctions.insert_all(Db.BookFormat)
+    |> Pipe.to(&Repo.chunked_insert_all(Db.BookFormat, &1))
   end
 
   defp build_book_formats(book_from_json, books_from_db, formats_from_db) do

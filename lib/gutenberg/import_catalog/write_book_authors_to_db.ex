@@ -5,7 +5,7 @@ defmodule Gutenberg.ImportCatalog.WriteBookAuthorsToDb do
   def _(books_from_json, books_from_db, authors_from_db) do
     books_from_json
     |> Enum.map(&build_book_author(&1, books_from_db, authors_from_db))
-    |> ImportCatalog.SharedFunctions.insert_all(Db.BookAuthor)
+    |> Pipe.to(&Repo.chunked_insert_all(Db.BookAuthor, &1))
   end
 
   defp build_book_author(book_from_json, books_from_db, authors_from_db) do

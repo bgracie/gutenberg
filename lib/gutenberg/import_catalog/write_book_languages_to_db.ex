@@ -7,7 +7,7 @@ defmodule Gutenberg.ImportCatalog.WriteBookLanguagesToDb do
     books_from_json
     |> Enum.map(&build_book_languages(&1, books_from_db, languages_from_db))
     |> List.flatten()
-    |> ImportCatalog.SharedFunctions.insert_all(Db.BookLanguage)
+    |> Pipe.to(&Repo.chunked_insert_all(Db.BookLanguage, &1))
   end
 
   defp build_book_languages(book_from_json, books_from_db, languages_from_db) do

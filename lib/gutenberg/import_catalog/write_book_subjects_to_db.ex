@@ -6,7 +6,7 @@ defmodule Gutenberg.ImportCatalog.WriteBookSubjectsToDb do
     books_from_json
     |> Enum.map(&build_book_subjects(&1, books_from_db, subjects_from_db))
     |> List.flatten()
-    |> ImportCatalog.SharedFunctions.insert_all(Db.BookSubject)
+    |> Pipe.to(&Repo.chunked_insert_all(Db.BookSubject, &1))
   end
 
   defp build_book_subjects(book_from_json, books_from_db, subjects_from_db) do

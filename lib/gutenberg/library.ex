@@ -8,6 +8,7 @@ defmodule Gutenberg.Library do
       alias Gutenberg.Db
       alias Gutenberg.Repo
       alias Gutenberg.Util
+      alias Gutenberg.Util.Pipe
     end
   end
 end

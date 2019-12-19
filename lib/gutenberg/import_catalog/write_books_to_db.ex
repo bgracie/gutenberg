@@ -5,7 +5,7 @@ defmodule Gutenberg.ImportCatalog.WriteBooksToDb do
     books_from_json
     |> Enum.uniq_by(& &1["title"])
     |> Enum.map(&build_book_record/1)
-    |> Gutenberg.ImportCatalog.SharedFunctions.insert_all(Db.Book)
+    |> Pipe.to(&Repo.chunked_insert_all(Db.Book, &1))
   end
 
   defp build_book_record(book_from_json) do

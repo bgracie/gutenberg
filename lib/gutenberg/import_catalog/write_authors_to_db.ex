@@ -9,7 +9,7 @@ defmodule Gutenberg.ImportCatalog.WriteAuthorsToDb do
     |> Enum.map(&ImportCatalog.SharedFunctions.reverse_author_name/1)
     |> Enum.uniq()
     |> Enum.map(&build_author/1)
-    |> ImportCatalog.SharedFunctions.insert_all(Db.Author)
+    |> Pipe.to(&Repo.chunked_insert_all(Db.Author, &1))
   end
 
   defp get_author(book_from_json), do: Map.get(book_from_json, "author")
