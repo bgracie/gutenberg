@@ -20,7 +20,7 @@ defmodule Gutenberg.ImportCatalog.WriteBookSubjectsToDb do
     Map.merge(
       %{
         book_id:
-          ImportCatalog.SharedFunctions.find_book_by_title(books_from_db, book_from_json["title"]).id,
+          ImportCatalog.Helpers.find_book_by_title(books_from_db, book_from_json["title"]).id,
         subject_id: Enum.find(subjects_from_db, &(&1.name == subject)).id
       },
       Repo.now_timestamps()

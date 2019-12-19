@@ -12,12 +12,12 @@ defmodule Gutenberg.ImportCatalog.WriteBookAuthorsToDb do
     Map.merge(
       %{
         book_id:
-          ImportCatalog.SharedFunctions.find_book_by_title(books_from_db, book_from_json["title"]).id,
+          ImportCatalog.Helpers.find_book_by_title(books_from_db, book_from_json["title"]).id,
         author_id:
           Enum.find(
             authors_from_db,
             &(&1.name ==
-                ImportCatalog.SharedFunctions.reverse_author_name(book_from_json["author"]))
+                ImportCatalog.Helpers.reverse_author_name(book_from_json["author"]))
           ).id
       },
       Repo.now_timestamps()

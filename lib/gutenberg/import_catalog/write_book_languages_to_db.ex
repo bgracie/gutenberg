@@ -20,7 +20,7 @@ defmodule Gutenberg.ImportCatalog.WriteBookLanguagesToDb do
     Map.merge(
       %{
         book_id:
-          ImportCatalog.SharedFunctions.find_book_by_title(books_from_db, book_from_json["title"]).id,
+          ImportCatalog.Helpers.find_book_by_title(books_from_db, book_from_json["title"]).id,
         language_id: Enum.find(languages_from_db, &(&1.code == language_code)).id
       },
       Repo.now_timestamps()

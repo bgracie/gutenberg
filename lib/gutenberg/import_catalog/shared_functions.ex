@@ -1,4 +1,4 @@
-defmodule Gutenberg.ImportCatalog.SharedFunctions do
+defmodule Gutenberg.ImportCatalog.Helpers do
   use Gutenberg.Library
 
   def find_book_by_title(books_from_db, title) do
