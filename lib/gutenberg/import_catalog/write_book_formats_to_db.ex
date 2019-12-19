@@ -17,12 +17,11 @@ defmodule Gutenberg.ImportCatalog.WriteBookFormatsToDb do
   end
 
   defp build_book_format({mime_type, url}, book_from_json, books_from_db, formats_from_db) do
+    book = Helpers.find_book_by_title(books_from_db, book_from_json["title"])
+    format = Enum.find(formats_from_db, &(&1.mime_type == mime_type))
+
     Map.merge(
-      %{
-        book_id: Helpers.find_book_by_title(books_from_db, book_from_json["title"]).id,
-        format_id: Enum.find(formats_from_db, &(&1.mime_type == mime_type)).id,
-        url: url
-      },
+      %{book_id: book.id, format_id: format.id, url: url},
       Repo.now_timestamps()
     )
   end

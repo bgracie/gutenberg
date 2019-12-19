@@ -9,18 +9,10 @@ defmodule Gutenberg.ImportCatalog.WriteBookAuthorsToDb do
   end
 
   defp build_book_author(book_from_json, books_from_db, authors_from_db) do
-    Map.merge(
-      %{
-        book_id:
-          ImportCatalog.Helpers.find_book_by_title(books_from_db, book_from_json["title"]).id,
-        author_id:
-          Enum.find(
-            authors_from_db,
-            &(&1.name ==
-                ImportCatalog.Helpers.reverse_author_name(book_from_json["author"]))
-          ).id
-      },
-      Repo.now_timestamps()
-    )
+    book = ImportCatalog.Helpers.find_book_by_title(books_from_db, book_from_json["title"])
+    saved_author_name = ImportCatalog.Helpers.reverse_author_name(book_from_json["author"])
+    author = Enum.find(authors_from_db, &(&1.name == saved_author_name))
+
+    Map.merge(%{book_id: book.id, author_id: author.id}, Repo.now_timestamps())
   end
 end

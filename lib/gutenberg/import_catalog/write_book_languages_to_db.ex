@@ -17,13 +17,9 @@ defmodule Gutenberg.ImportCatalog.WriteBookLanguagesToDb do
   end
 
   defp build_book_language(language_code, book_from_json, books_from_db, languages_from_db) do
-    Map.merge(
-      %{
-        book_id:
-          ImportCatalog.Helpers.find_book_by_title(books_from_db, book_from_json["title"]).id,
-        language_id: Enum.find(languages_from_db, &(&1.code == language_code)).id
-      },
-      Repo.now_timestamps()
-    )
+    book = ImportCatalog.Helpers.find_book_by_title(books_from_db, book_from_json["title"])
+    language = Enum.find(languages_from_db, &(&1.code == language_code))
+
+    Map.merge(%{book_id: book.id, language_id: language.id}, Repo.now_timestamps())
   end
 end
