@@ -2,6 +2,10 @@
 
 Gutenberg is an experimental alternate interface for the Project Gutenberg collection.
 
+# Demo
+
+A demo is available [here](https://gutenberg.briangracie.net).
+
 # Design
 
 The project is an Elixir/Phoenix app.
