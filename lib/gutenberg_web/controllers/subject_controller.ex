@@ -1,12 +1,10 @@
 defmodule GutenbergWeb.SubjectController do
   use GutenbergWeb, :controller
 
-  alias Gutenberg.Books.Subjects
+  use Gutenberg.Library
 
   def show(conn, %{"id" => id}) do
-    subject =
-      Subjects.get!(id)
-      |> Gutenberg.Repo.preload(books: :authors)
+    subject = Db.Subject |> Repo.get!(id) |> Repo.preload(books: :authors)
 
     render(conn, "show.html", subject: subject)
   end

@@ -2,8 +2,17 @@
 
 Gutenberg is an experimental alternate interface for the Project Gutenberg collection.
 
-# Deploy to Dokku
+# Design
 
+The project is an Elixir/Phoenix app.
+
+`GutenbergWeb` contains the Phoenix app.
+
+`Gutenberg` contains the non-web components, namespaced by their concern.
+
+# Deployment
+
+## To Dokku:
 ```
 git remote add dokku dokku@<dokku-host-ip>:gutenberg
 git push dokku master

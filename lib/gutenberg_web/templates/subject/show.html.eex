@@ -8,7 +8,7 @@
           <%= link(book.title, to: book_path(@conn, :show, locale(), book)) %>
         </div>
         <div class="card-subtitle">
-          <%= Gutenberg.Books.Book.author_name(book) %>
+          <%= Gutenberg.Db.Book.author_name(book) %>
         </div>
       </div>
     </div>

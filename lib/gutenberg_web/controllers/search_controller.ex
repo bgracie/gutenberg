@@ -9,7 +9,7 @@ defmodule GutenbergWeb.SearchController do
     with collection when collection in ["books", "authors", "subjects"] <-
            search_params["collection"] || "books",
          term = search_params["term"],
-         page = (search_params["page"] || 1) |> Gutenberg.Utils.ensure_int() do
+         page = Ecto.Type.cast(:integer, search_params["page"] || 1) do
       page =
         apply(
           GutenbergWeb.SearchController,
@@ -28,24 +28,24 @@ defmodule GutenbergWeb.SearchController do
   end
 
   def books(term, page) when is_binary(term) do
-    Gutenberg.Books.Book
-    |> Gutenberg.Books.Book.search(term)
-    |> Gutenberg.Books.Book.order_by_title_length()
+    Gutenberg.Db.Book
+    |> Gutenberg.Db.Book.search(term)
+    |> Gutenberg.Db.Book.order_by_title_length()
     |> Ecto.Query.preload(:authors)
     |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
 
   def authors(term, page) when is_binary(term) do
-    Gutenberg.Books.Author
-    |> Gutenberg.Books.Author.search(term)
-    |> Gutenberg.Books.Author.order_by_name_length()
+    Gutenberg.Db.Author
+    |> Gutenberg.Db.Author.search(term)
+    |> Gutenberg.Db.Author.order_by_name_length()
     |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
 
   def subjects(term, page) when is_binary(term) do
-    Gutenberg.Books.Subject
-    |> Gutenberg.Books.Subject.search(term)
-    |> Gutenberg.Books.Subject.order_by_name_length()
+    Gutenberg.Db.Subject
+    |> Gutenberg.Db.Subject.search(term)
+    |> Gutenberg.Db.Subject.order_by_name_length()
     |> Gutenberg.Repo.paginate(page: page, page_size: @results_per_page)
   end
 end

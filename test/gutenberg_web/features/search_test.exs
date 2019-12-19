@@ -1,15 +1,14 @@
 defmodule GutenbergWeb.SearchTest do
   use Gutenberg.FeatureCase
-  alias Gutenberg.Repo
-  alias Gutenberg.Books
+  use Gutenberg.Library
 
   import Wallaby.Query, only: [css: 2, css: 1, text_field: 1, link: 1]
 
   setup do
     %{
-      matching_book: Repo.insert!(%Books.Book{title: "Matching"}),
-      matching_author: Repo.insert!(%Books.Author{name: "Matching"}),
-      matching_subject: Repo.insert!(%Books.Subject{name: "Matching"})
+      matching_book: Repo.insert!(%Db.Book{title: "Matching"}),
+      matching_author: Repo.insert!(%Db.Author{name: "Matching"}),
+      matching_subject: Repo.insert!(%Db.Subject{name: "Matching"})
     }
   end
 

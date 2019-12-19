@@ -51,7 +51,7 @@
               <% end %>
             </div>
             <div class="card-subtitle">
-              <%= "#{gettext("by")} #{Gutenberg.Books.Book.author_name(result)}" %>
+              <%= "#{gettext("by")} #{Gutenberg.Db.Book.author_name(result)}" %>
             </div>
           <% "authors" -> %>
             <div class="card-title">

@@ -1,15 +1,14 @@
 defmodule GutenbergWeb.BookController do
   use GutenbergWeb, :controller
+  use Gutenberg.Library
 
   import Ecto.Query, warn: false
-  alias Gutenberg.Books
-  alias Gutenberg.Repo
 
   def show(conn, %{"id" => id}) do
     book =
-      Books.get!(id)
-      |> Repo.preload([:authors, :subjects, :languages])
-      |> Repo.preload(book_formats: :format)
+      Db.Book
+      |> Repo.get!(id)
+      |> Repo.preload(book_formats: [:format], authors: [], subjects: [], languages: [])
 
     render(conn, "show.html", book: book)
   end

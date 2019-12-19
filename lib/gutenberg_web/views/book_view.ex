@@ -8,7 +8,7 @@ defmodule GutenbergWeb.BookView do
   def language_labels(book) do
     book.languages
     |> Enum.map(& &1.code)
-    |> Enum.map(&Gutenberg.LanguageCodes.label/1)
+    |> Enum.map(&Gutenberg.Db.LanguageCodes.label/1)
     |> Gutenberg.List.to_sentence()
   end
 
