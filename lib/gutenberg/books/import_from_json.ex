@@ -1,5 +1,7 @@
 defmodule Gutenberg.Books.ImportFromJson do
-  def exec(path) do
+  @books_json_path "priv/books.json"
+
+  def exec(path \\ @books_json_path) do
     path
     |> File.read!()
     |> Jason.decode!()

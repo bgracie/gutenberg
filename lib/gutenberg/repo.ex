@@ -20,8 +20,7 @@ defmodule Gutenberg.Repo do
     }
   end
 
-  def chunked_insert_all(module, records)
-      when is_atom(module) and is_list(records) do
+  def chunked_insert_all(module, records) do
     records
     |> Enum.chunk_every(1000)
     |> Enum.each(fn chunk -> insert_all(module, chunk) end)
