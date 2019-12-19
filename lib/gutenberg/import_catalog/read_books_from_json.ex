@@ -3,7 +3,7 @@ defmodule Gutenberg.ImportCatalog.ReadBooksFromJson do
 
   def _(path) do
     path
-    |> Gutenberg.ImportCatalog.ImportFromJson.exec()
+    |> Gutenberg.FileSystem.JsonCatalogDump.read()
     |> Enum.filter(&valid?/1)
   end
 

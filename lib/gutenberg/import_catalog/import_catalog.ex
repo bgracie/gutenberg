@@ -21,7 +21,7 @@ defmodule Gutenberg.ImportCatalog do
     WriteBookAuthorsToDb
   }
 
-  @books_json_path "priv/books.json"
+  @books_json_path Gutenberg.FileSystem.JsonCatalogDump.path()
 
   def _(path \\ @books_json_path) do
     books_from_json = ReadBooksFromJson._(path)
