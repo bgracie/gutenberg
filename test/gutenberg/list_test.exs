@@ -15,7 +15,8 @@ defmodule Gutenberg.ListTest do
     end
 
     test "three members" do
-      assert Gutenberg.List.to_sentence(["one", "two", "three"]) == "one, two, and three"
+      assert Gutenberg.List.to_sentence(["one", "two", "three"]) ==
+               "one, two, and three"
     end
 
     test "four members" do

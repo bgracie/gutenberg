@@ -14,14 +14,16 @@ defmodule Gutenberg.ImportCatalogTest do
         |> Repo.one!()
         |> Repo.preload([:authors, :formats, :languages, :subjects])
 
-      assert saved_book.title == "The Declaration of Independence of the United States of America"
+      assert saved_book.title ==
+               "The Declaration of Independence of the United States of America"
 
       assert Enum.find(saved_book.subjects, fn subject ->
                subject.name == "United States. Declaration of Independence"
              end)
 
       assert Enum.find(saved_book.subjects, fn subject ->
-               subject.name == "United States -- History -- Revolution, 1775-1783 -- Sources"
+               subject.name ==
+                 "United States -- History -- Revolution, 1775-1783 -- Sources"
              end)
 
       assert Enum.at(saved_book.authors, 0).name == "Thomas Jefferson"

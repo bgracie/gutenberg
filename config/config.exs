@@ -14,7 +14,8 @@ config :phoenix, :json_library, Jason
 # Configures the endpoint
 config :gutenberg, GutenbergWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "CgM0JUUQds4JUzDbUswAePWpCpWYoOHFumdp7tHtzZPe/P9c7/ibE9R8geEPd2kG",
+  secret_key_base:
+    "CgM0JUUQds4JUzDbUswAePWpCpWYoOHFumdp7tHtzZPe/P9c7/ibE9R8geEPd2kG",
   render_errors: [view: GutenbergWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Gutenberg.PubSub, adapter: Phoenix.PubSub.PG2]
 

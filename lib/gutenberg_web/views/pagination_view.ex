@@ -34,7 +34,10 @@ defmodule GutenbergWeb.Shared.PaginationView do
   end
 
   def middle_range(%{page_number: current_page, total_pages: total_pages}) do
-    middle_range_start(current_page)..middle_range_end(current_page, total_pages)
+    middle_range_start(current_page)..middle_range_end(
+      current_page,
+      total_pages
+    )
     |> Enum.to_list()
   end
 

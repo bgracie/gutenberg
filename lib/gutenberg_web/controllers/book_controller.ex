@@ -8,7 +8,12 @@ defmodule GutenbergWeb.BookController do
     book =
       Db.Book
       |> Repo.get!(id)
-      |> Repo.preload(book_formats: [:format], authors: [], subjects: [], languages: [])
+      |> Repo.preload(
+        book_formats: [:format],
+        authors: [],
+        subjects: [],
+        languages: []
+      )
 
     render(conn, "show.html", book: book)
   end
