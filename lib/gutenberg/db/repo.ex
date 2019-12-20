@@ -23,6 +23,6 @@ defmodule Gutenberg.Repo do
   def chunked_insert_all(module, records) do
     records
     |> Enum.chunk_every(1000)
-    |> Enum.each(&insert_all(module, &1))
+    |> Enum.each(&insert_all(module, &1, on_conflict: :nothing))
   end
 end
