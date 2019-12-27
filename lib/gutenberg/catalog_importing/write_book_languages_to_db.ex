@@ -1,7 +1,7 @@
-defmodule Gutenberg.ImportCatalog.WriteBookLanguagesToDb do
+defmodule Gutenberg.CatalogImporting.WriteBookLanguagesToDb do
   use Gutenberg.Library
 
-  alias Gutenberg.ImportCatalog
+  alias Gutenberg.CatalogImporting
 
   def _(books_from_json, books_from_db, languages_from_db) do
     books_from_json
@@ -25,7 +25,7 @@ defmodule Gutenberg.ImportCatalog.WriteBookLanguagesToDb do
          languages_from_db
        ) do
     book =
-      ImportCatalog.Helpers.find_book_by_title(
+      CatalogImporting.Helpers.find_book_by_title(
         books_from_db,
         book_from_json["title"]
       )

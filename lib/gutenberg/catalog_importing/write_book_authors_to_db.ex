@@ -1,6 +1,6 @@
-defmodule Gutenberg.ImportCatalog.WriteBookAuthorsToDb do
+defmodule Gutenberg.CatalogImporting.WriteBookAuthorsToDb do
   use Gutenberg.Library
-  alias Gutenberg.ImportCatalog
+  alias Gutenberg.CatalogImporting
 
   def _(books_from_json, books_from_db, authors_from_db) do
     books_from_json
@@ -10,13 +10,13 @@ defmodule Gutenberg.ImportCatalog.WriteBookAuthorsToDb do
 
   defp build_book_author(book_from_json, books_from_db, authors_from_db) do
     book =
-      ImportCatalog.Helpers.find_book_by_title(
+      CatalogImporting.Helpers.find_book_by_title(
         books_from_db,
         book_from_json["title"]
       )
 
     saved_author_name =
-      ImportCatalog.Helpers.reverse_author_name(book_from_json["author"])
+      CatalogImporting.Helpers.reverse_author_name(book_from_json["author"])
 
     author = Enum.find(authors_from_db, &(&1.name == saved_author_name))
 

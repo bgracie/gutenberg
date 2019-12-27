@@ -1,6 +1,6 @@
-defmodule Gutenberg.ImportCatalog.WriteBookFormatsToDb do
+defmodule Gutenberg.CatalogImporting.WriteBookFormatsToDb do
   use Gutenberg.Library
-  alias Gutenberg.ImportCatalog.Helpers
+  alias Gutenberg.CatalogImporting.Helpers
 
   def _(books_from_json, books_from_db, formats_from_db) do
     books_from_json

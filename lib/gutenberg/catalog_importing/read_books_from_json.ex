@@ -1,4 +1,4 @@
-defmodule Gutenberg.ImportCatalog.ReadBooksFromJson do
+defmodule Gutenberg.CatalogImporting.ReadBooksFromJson do
   use Gutenberg.Library
 
   def _(path) do

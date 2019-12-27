@@ -1,4 +1,4 @@
-defmodule Gutenberg.ImportCatalog.WriteSubjectsToDb do
+defmodule Gutenberg.CatalogImporting.WriteSubjectsToDb do
   use Gutenberg.Library
 
   def _(books_from_json) do

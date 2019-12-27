@@ -1,13 +1,13 @@
-defmodule Gutenberg.ImportCatalogTest do
+defmodule Gutenberg.CatalogImportingTest do
   use Gutenberg.DataCase
 
   alias Gutenberg.Repo
 
-  describe "_/1" do
+  describe "import_catalog/1" do
     test "seeds books, authors, formats, languages, and subjects from Gutenberg json file" do
       fixture_path = Path.join([fixtures_path(), "books.json"])
 
-      Gutenberg.ImportCatalog._(fixture_path)
+      Gutenberg.CatalogImporting.import_catalog(fixture_path)
 
       saved_book =
         Gutenberg.Db.Book

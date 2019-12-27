@@ -1,4 +1,4 @@
-defmodule Gutenberg.ImportCatalog do
+defmodule Gutenberg.CatalogImporting do
   @moduledoc """
   Seeds books from JSON dump of entire Gutenberg catalog.
 
@@ -8,7 +8,7 @@ defmodule Gutenberg.ImportCatalog do
 
   use Gutenberg.Library
 
-  alias Gutenberg.ImportCatalog.{
+  alias Gutenberg.CatalogImporting.{
     ReadBooksFromJson,
     WriteBooksToDb,
     WriteFormatsToDb,
@@ -23,7 +23,7 @@ defmodule Gutenberg.ImportCatalog do
 
   @books_json_path Gutenberg.FileSystem.JsonCatalogDump.path()
 
-  def _(path \\ @books_json_path) do
+  def import_catalog(path \\ @books_json_path) do
     books_from_json = ReadBooksFromJson._(path)
 
     WriteBooksToDb._(books_from_json)
