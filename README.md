@@ -1,6 +1,6 @@
 # Gutenberg
 
-Gutenberg is an experimental alternate interface for the Project Gutenberg collection.
+Gutenberg is an experimental alternate interface for the Project Gutenberg collection.  It serves as a test bed for my Elixir web development work.
 
 # Demo
 
